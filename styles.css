@@ -307,13 +307,89 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid var(--border);
 }
 .hero-meta > div {
-  padding: 28px 0;
-  padding-right: 24px;
+  padding: 28px 24px;
   border-right: 1px solid var(--border);
 }
-.hero-meta > div:last-child { border-right: 0; padding-right: 0; padding-left: 24px; }
+.hero-meta > div:first-child { padding-left: 0; }
+.hero-meta > div:last-child { border-right: 0; padding-right: 0; }
 .hero-meta .k { font-family: var(--font-mono); font-size: 11px; color: var(--gray); letter-spacing: 0.14em; text-transform: uppercase; }
 .hero-meta .v { font-family: var(--font-display); font-weight: 600; font-size: 18px; color: var(--ink); margin-top: 12px; letter-spacing: -0.01em; }
+
+/* ---------- Typewriter hero ---------- */
+.typewriter-hero {
+  display: grid;
+  grid-template-columns: 1fr 340px;
+  gap: 56px;
+  align-items: end;
+}
+.typewriter-word { color: var(--blue); }
+.typewriter-cursor {
+  display: inline-block;
+  width: 3px;
+  height: 0.78em;
+  background: var(--ink);
+  margin-left: 3px;
+  vertical-align: baseline;
+  animation: tw-blink 1s steps(2) infinite;
+}
+@keyframes tw-blink { 50% { opacity: 0; } }
+.typewriter-card {
+  border: 1px solid var(--border);
+  padding: 22px 26px;
+  background: var(--white);
+  box-shadow: 0 6px 32px rgba(0,0,0,0.08);
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+.typewriter-card.visible { opacity: 1; transform: translateY(0); }
+.typewriter-card .tc-type {
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gray);
+}
+.typewriter-card .tc-id {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--gray);
+  margin-top: 14px;
+  letter-spacing: 0.08em;
+}
+.typewriter-card .tc-party {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  margin-top: 4px;
+  color: var(--ink);
+}
+.typewriter-card .tc-amount {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: 30px;
+  letter-spacing: -0.03em;
+  color: var(--ink);
+  margin-top: 16px;
+}
+.typewriter-card .tc-status {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  margin-top: 10px;
+}
+.typewriter-card .tc-dot {
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+@media (max-width: 1080px) {
+  .typewriter-hero { grid-template-columns: 1fr; }
+  .typewriter-card { display: none !important; }
+}
 
 /* ---------- Section heads ---------- */
 .section-head {

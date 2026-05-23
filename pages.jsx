@@ -6,16 +6,15 @@ function HomePage() {
       {/* HERO */}
       <section className="hero">
         <div className="container">
-          <h1 className="display-xl hero-headline">
-            The infrastructure for institutional trade finance.
-          </h1>
-          <p className="hero-sub">
-            Strike SCF is the platform that funding banks, anchor corporates, and their suppliers use to originate, price, and settle supply chain finance — at scale, on a single ledger.
-          </p>
-          <div className="hero-cta-row">
-            <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request a Pilot</a>
-            <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
-          </div>
+          <TypewriterHero>
+            <p className="hero-sub">
+              Strike SCF is the platform that funding banks, anchor corporates, and their suppliers use to originate, price, and settle supply chain finance — at scale, on a single ledger.
+            </p>
+            <div className="hero-cta-row">
+              <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request a Pilot</a>
+              <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
+            </div>
+          </TypewriterHero>
           <div className="hero-meta">
             <div><div className="k">SERVICING</div><div className="v">7+ Industries</div></div>
             <div><div className="k">SETTLEMENT ASA</div><div className="v">Less than 1 Hour</div></div>
@@ -567,7 +566,7 @@ function PlatformPage() {
       <section className="section dark">
         <div className="container">
           <div className="section-head" style={{ borderColor: '#222730' }}>
-            <h2 className="display-md" style={{ color: 'var(--white)', maxWidth: '20ch' }}>Documented REST + GraphQL surfaces. SDKs for Java, Python, and Go.</h2>
+            <h2 className="display-md" style={{ color: 'var(--white)', gridColumn: 'span 2' }}>Documented REST + GraphQL surfaces. SDKs for Java, Python, and Go.</h2>
           </div>
           <div className="row-2" style={{ alignItems: 'start' }}>
             <div>
