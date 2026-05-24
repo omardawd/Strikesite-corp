@@ -8,16 +8,16 @@ function HomePage() {
         <div className="container">
           <TypewriterHero>
             <p className="hero-sub">
-              Strike SCF is the platform that funding banks, anchor corporates, and their suppliers use to originate, price, and settle supply chain finance — at scale, on a single ledger.
+              Strike connects banks, anchors, and suppliers on one intelligent platform so financing decisions happen before disruption becomes failure.
             </p>
             <div className="hero-cta-row">
-              <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request a Pilot</a>
-              <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+              <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>See the Platform</a>
             </div>
           </TypewriterHero>
           <div className="hero-meta">
-            <div><div className="k">SERVICING</div><div className="v">7+ Industries</div></div>
-            <div><div className="k">SETTLEMENT ASA</div><div className="v">Less than 1 Hour</div></div>
+            <div><div className="k">INDUSTRIES SERVED</div><div className="v">Apparel · Manufacturing · Consumer Goods</div></div>
+            <div><div className="k">RISK SIGNALS</div><div className="v">Analyzed Per Decision</div></div>
             <div><div className="k">UPTIME</div><div className="v">99.94%</div></div>
             <div><div className="k">COMPLIANCE</div><div className="v">SOC 2 · ISO 27001</div></div>
           </div>
@@ -94,7 +94,7 @@ function HomePage() {
               <div key={i} className="counterparty-card">
                 <h3 className="display-md" style={{ fontSize: 40 }}>{c.t}</h3>
                 <p className="body body-gray" style={{ fontSize: 15, maxWidth: '36ch' }}>{c.d}</p>
-                <a href={'#' + c.path} className="mono" style={{ color: 'var(--blue)', marginTop: 'auto', letterSpacing: '0.14em', textTransform: 'uppercase' }} onClick={(e) => navTo(e, c.path)}>
+                <a href={c.path} className="mono" style={{ color: 'var(--blue)', marginTop: 'auto', letterSpacing: '0.14em', textTransform: 'uppercase' }} onClick={(e) => navTo(e, c.path)}>
                   {c.cta} →
                 </a>
               </div>
@@ -129,7 +129,7 @@ function HomePage() {
                 <div><div className="k" style={{ color: 'var(--gray-soft)' }}>DECISION LATENCY</div><div className="v" style={{ color: 'var(--white)' }}>820 ms</div></div>
               </div>
               <div style={{ marginTop: 32 }}>
-                <a href="#/solutions" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/solutions')}>See Strike AI</a>
+                <a href="/solutions" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/solutions')}>See Strike AI</a>
               </div>
             </div>
             <div style={{ position: 'relative' }}>
@@ -160,8 +160,8 @@ function HomePage() {
                 We deploy alongside your existing core banking and ERP stack. No data migration, no re-platforming. First disbursement inside 30 days.
               </p>
               <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
-                <a href="#/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
-                <a href="#/platform" className="btn btn-ghost btn-arrow" style={{ borderColor: '#3A3F49', color: 'var(--white)' }} onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
+                <a href="/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" style={{ borderColor: '#3A3F49', color: 'var(--white)' }} onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
               </div>
             </div>
           </div>
@@ -300,8 +300,8 @@ function BanksPage() {
                 { title: 'Funding Optionality', desc: 'Single-funder, club deal, or syndicate. Tranche-level participation tracking built in.' },
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
-                <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request Briefing</a>
-                <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Technical Spec</a>
+                <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request Briefing</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Technical Spec</a>
               </div>
             </div>
 
@@ -435,8 +435,8 @@ function AnchorsPage() {
                 { title: 'Supplier Adoption', desc: 'Supplier portal in 9 languages. Onboarding cohorts of 500+ in a single batch.' },
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
-                <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
-                <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+                <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
               </div>
             </div>
 
@@ -798,8 +798,8 @@ function SuppliersPage() {
                 
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
-                <a href="#/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Your Anchor</a>
-                <a href="#/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+                <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Your Anchor</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
               </div>
             </div>
 

@@ -1,14 +1,13 @@
-/* App shell with hash router */
+/* App shell with history API router */
 
 function App() {
-  const [route, setRoute] = useState(window.location.hash.replace('#', '') || '/');
+  const getRoute = () => window.location.pathname || '/';
+  const [route, setRoute] = useState(getRoute());
 
   useEffect(() => {
-    const onHash = () => {
-      setRoute(window.location.hash.replace('#', '') || '/');
-    };
-    window.addEventListener('hashchange', onHash);
-    return () => window.removeEventListener('hashchange', onHash);
+    const onPop = () => setRoute(getRoute());
+    window.addEventListener('popstate', onPop);
+    return () => window.removeEventListener('popstate', onPop);
   }, []);
 
   let Page = HomePage;
