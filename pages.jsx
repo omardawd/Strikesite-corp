@@ -8,7 +8,7 @@ function HomePage() {
         <div className="container">
           <TypewriterHero>
             <p className="hero-sub">
-              Strike connects banks, anchors, and suppliers on one intelligent platform so financing decisions happen before disruption becomes failure.
+              Strike connects supplier risk, operational signals, and financing options so companies protect margin, continuity, and growth before disruption becomes failure. Built for CFOs, supply chain leaders, procurement teams, and the funders who support them.
             </p>
             <div className="hero-cta-row">
               <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
@@ -20,6 +20,73 @@ function HomePage() {
             <div><div className="k">RISK SIGNALS</div><div className="v">Analyzed Per Decision</div></div>
             <div><div className="k">UPTIME</div><div className="v">99.94%</div></div>
             <div><div className="k">COMPLIANCE</div><div className="v">SOC 2 · ISO 27001</div></div>
+          </div>
+        </div>
+      </section>
+
+      {/* CREDIBILITY BAR */}
+      <section className="section-tight bare">
+        <div className="container">
+          <p className="eyebrow" style={{ textAlign: 'center', color: 'var(--gray)' }}>TRUSTED FRAMEWORK · UN CEFACT ALIGNED · WORLD BANK ADVISOR · SOC 2 · ISO 27001</p>
+        </div>
+      </section>
+
+      {/* MAP DECIDE FUND */}
+      <section className="section off">
+        <div className="container">
+          <SectionHead eyebrow="HOW IT WORKS" title="Map. Decide. Fund." />
+          <div className="row-3">
+            {[
+              { k: '01 · MAP', t: 'Map', d: 'Build a verified supply graph across buyers, suppliers, funders, invoices, purchase orders, countries, and risk signals. Know your network before it fails you.' },
+              { k: '02 · DECIDE', t: 'Decide', d: 'Identify which suppliers are critical, stressed, exposed, or worth prioritizing. Strike surfaces the right action before disruption reaches your production line or your margin.' },
+              { k: '03 · FUND', t: 'Fund', d: 'Route invoices, purchase orders, or supplier needs to the right capital partner. Buyer cash, bank credit, private credit, or development finance, matched to the right opportunity at the right moment.' },
+            ].map((c, i) => (
+              <div key={i} style={{ background: 'var(--white)', padding: 40 }}>
+                <div className="mono" style={{ color: 'var(--blue)' }}>{c.k}</div>
+                <h3 className="display-md" style={{ marginTop: 16, fontSize: 32 }}>{c.t}</h3>
+                <p className="body body-gray" style={{ marginTop: 14, fontSize: 15, maxWidth: '34ch' }}>{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* ADVISORY CIRCLE */}
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <div className="mono" style={{ color: 'var(--blue)', marginBottom: 20 }}>STRIKE REDBOOK ADVISORY CIRCLE</div>
+              <h2 className="display-md" style={{ maxWidth: '22ch', marginBottom: 24 }}>
+                You are not being sold software. You are being invited into something strategic.
+              </h2>
+              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 20 }}>
+                Strike is inviting selected companies in logistics, clean tech, critical materials, manufacturing, and supply chain finance to help define the next generation decisioning and liquidity orchestration layer for resilient global supply chains.
+              </p>
+              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 32 }}>
+                Advisory Circle members shape the Strike RedBook, validate platform priorities, and gain early access before general availability. No purchasing obligation. No competitive disclosure. Just a seat at the table where the operating layer for resilient trade is being built.
+              </p>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request an Invitation</a>
+            </div>
+            <div>
+              {[
+                { sector: 'LOGISTICS', name: 'Pacific Freight Holdings', region: 'NORTH AMERICA', status: 'CIRCLE MEMBER' },
+                { sector: 'CLEAN TECH', name: 'Meridian Energy Systems', region: 'NORTH AMERICA', status: 'CIRCLE MEMBER' },
+                { sector: 'CRITICAL MATERIALS', name: 'Kestra Resources Group', region: 'NORTH AMERICA', status: 'INVITED' },
+                { sector: 'MANUFACTURING', name: 'Coventry Industrial Co.', region: 'NORTH AMERICA', status: 'INVITED' },
+              ].map((p, i) => (
+                <div key={i} style={{ padding: '20px 0', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <div>
+                    <div className="mono" style={{ color: 'var(--gray)' }}>{p.sector}</div>
+                    <div style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 18, marginTop: 4, letterSpacing: '-0.01em' }}>{p.name}</div>
+                  </div>
+                  <div style={{ textAlign: 'right' }}>
+                    <div className="mono" style={{ color: 'var(--gray)' }}>{p.region}</div>
+                    <div className="mono" style={{ color: p.status === 'CIRCLE MEMBER' ? 'var(--blue)' : 'var(--gray)', marginTop: 4 }}>{p.status}</div>
+                  </div>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
