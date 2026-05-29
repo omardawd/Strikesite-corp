@@ -14,10 +14,6 @@ function TransactionFlow() {
 
   return (
     <div className="flow">
-      {/* Header row */}
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 28, paddingBottom: 18, borderBottom: '1px solid var(--border)' }}>
-        <span className="eyebrow">Transaction Flow — Single Invoice </span>
-      </div>
 
       {/* Scrollable area */}
       <div style={{ minWidth: 1060 }}>

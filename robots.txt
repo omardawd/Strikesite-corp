@@ -1,4 +1,55 @@
+# Strike SCF — robots.txt
+# https://www.strikescf.com
+
+# All standard crawlers
 User-agent: *
 Allow: /
+Disallow: /assets/favicon-16x16.png
+Disallow: /assets/favicon-48x48.png
+Disallow: /assets/favicon-64x64.png
+Disallow: /assets/favicon-128x128.png
 
+# Google — full access including rich snippets
+User-agent: Googlebot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /assets/strike-logo.png
+Allow: /assets/og-image.png
+
+# AI crawlers — allow full indexing for AI search and knowledge bases
+User-agent: GPTBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Applebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: facebookexternalhit
+Allow: /
+
+User-agent: LinkedInBot
+Allow: /
+
+User-agent: Twitterbot
+Allow: /
+
+# Sitemap
 Sitemap: https://www.strikescf.com/sitemap.xml

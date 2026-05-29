@@ -1,10 +1,85 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://www.strikescf.com/</loc><lastmod>2026-05-25</lastmod><priority>1.0</priority></url>
-  <url><loc>https://www.strikescf.com/solutions</loc><lastmod>2026-05-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.strikescf.com/banks</loc><lastmod>2026-05-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.strikescf.com/anchors</loc><lastmod>2026-05-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.strikescf.com/suppliers</loc><lastmod>2026-05-25</lastmod><priority>0.8</priority></url>
-  <url><loc>https://www.strikescf.com/platform</loc><lastmod>2026-05-25</lastmod><priority>0.7</priority></url>
-  <url><loc>https://www.strikescf.com/contact</loc><lastmod>2026-05-25</lastmod><priority>0.7</priority></url>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
+        http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
+
+  <!-- Core pages -->
+  <url>
+    <loc>https://www.strikescf.com/</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>1.0</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/solutions</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/platform</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/redbook</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/contact</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Audience pages -->
+  <url>
+    <loc>https://www.strikescf.com/banks</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/anchors</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/suppliers</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Program pages — high keyword value for search -->
+  <url>
+    <loc>https://www.strikescf.com/programs/po-financing</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/programs/invoice-factoring</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/programs/reverse-factoring</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://www.strikescf.com/programs/dynamic-discounting</loc>
+    <lastmod>2026-05-29</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+
 </urlset>

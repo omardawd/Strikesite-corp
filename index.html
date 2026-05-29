@@ -5,52 +5,124 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <title>Strike SCF | Decisioning and Liquidity Orchestration for Resilient Supply Chains</title>
-  <meta name="description" content="Strike helps companies identify supplier risk, verify counterparties, and route liquidity to protect supply continuity under disruption." />
+  <meta name="description" content="Strike connects supplier risk, operational signals, and financing options so companies protect margin, continuity, and growth before disruption becomes failure." />
   <meta name="robots" content="index, follow" />
   <link rel="canonical" href="https://www.strikescf.com/" />
 
-  <link rel="icon" href="/assets/favicon.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon.png" />
-  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon.png" />
-  <link rel="icon" type="image/png" sizes="180x180" href="/assets/favicon.png" />
-  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon.png" />
-  <link rel="mask-icon" href="/assets/favicon.png" color="#0052FF" />
-  <meta name="msapplication-TileColor" content="#0052FF" />
+  <!-- =====================================================================
+       FAVICON — full chain to override Vercel's default favicon
+       ICO is the primary signal for all browsers. PNG fallbacks for modern
+       browsers, Apple devices, and Android PWA manifest.
+       ===================================================================== -->
+  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
+  <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180x180.png" />
+  <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#0052FF" />
+  <meta name="msapplication-TileColor" content="#0052FF" />
+  <meta name="msapplication-TileImage" content="/assets/favicon-192x192.png" />
 
+  <!-- =====================================================================
+       SEO — Open Graph
+       ===================================================================== -->
   <meta property="og:type" content="website" />
   <meta property="og:url" content="https://www.strikescf.com/" />
   <meta property="og:title" content="Strike SCF | Decisioning and Liquidity Orchestration for Resilient Supply Chains" />
-  <meta property="og:description" content="Strike helps companies identify supplier risk, verify counterparties, and route liquidity to protect supply continuity under disruption." />
+  <meta property="og:description" content="Strike connects supplier risk, operational signals, and financing options so companies protect margin, continuity, and growth before disruption becomes failure." />
   <meta property="og:image" content="https://www.strikescf.com/assets/og-image.png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
   <meta property="og:site_name" content="Strike SCF" />
+  <meta property="og:locale" content="en_US" />
 
+  <!-- =====================================================================
+       SEO — Twitter / X card
+       ===================================================================== -->
   <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@strikescf" />
   <meta name="twitter:title" content="Strike SCF | Decisioning and Liquidity Orchestration for Resilient Supply Chains" />
-  <meta name="twitter:description" content="Strike helps companies identify supplier risk, verify counterparties, and route liquidity to protect supply continuity under disruption." />
+  <meta name="twitter:description" content="Strike connects supplier risk, operational signals, and financing options so companies protect margin, continuity, and growth before disruption becomes failure." />
   <meta name="twitter:image" content="https://www.strikescf.com/assets/og-image.png" />
 
+  <!-- =====================================================================
+       SEO — Structured data (Schema.org JSON-LD)
+       ===================================================================== -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "Strike SCF",
-    "url": "https://www.strikescf.com",
-    "description": "Decisioning and liquidity orchestration platform connecting supplier risk, operational signals, and financing options for resilient supply chains.",
-    "applicationCategory": "FinanceApplication",
-    "operatingSystem": "Web",
-    "publisher": {
-      "@type": "Organization",
-      "name": "Strike SCF Inc.",
-      "url": "https://www.strikescf.com",
-      "logo": "https://www.strikescf.com/assets/strike-logo.png"
-    }
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://www.strikescf.com/#organization",
+        "name": "Strike SCF",
+        "url": "https://www.strikescf.com",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.strikescf.com/assets/strike-logo.png",
+          "width": 1280,
+          "height": 853
+        },
+        "description": "Decisioning and liquidity orchestration platform for resilient global supply chains.",
+        "foundingDate": "2025",
+        "sameAs": []
+      },
+      {
+        "@type": "SoftwareApplication",
+        "@id": "https://www.strikescf.com/#product",
+        "name": "Strike SCF Platform",
+        "url": "https://app.strikescf.com",
+        "applicationCategory": "FinanceApplication",
+        "operatingSystem": "Web",
+        "description": "AI-powered supply chain finance platform connecting supplier risk, operational signals, and embedded financing. Supports reverse factoring, invoice factoring, PO financing, and dynamic discounting.",
+        "publisher": {
+          "@id": "https://www.strikescf.com/#organization"
+        },
+        "featureList": [
+          "Reverse Factoring",
+          "Invoice Factoring",
+          "Purchase Order Financing",
+          "Dynamic Discounting",
+          "AI Risk Scoring",
+          "Supply Graph",
+          "KYB Onboarding",
+          "Regulatory Document Generation"
+        ]
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://www.strikescf.com/#website",
+        "url": "https://www.strikescf.com",
+        "name": "Strike SCF",
+        "publisher": {
+          "@id": "https://www.strikescf.com/#organization"
+        },
+        "potentialAction": {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://www.strikescf.com/?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        }
+      }
+    ]
   }
   </script>
 
+  <!-- =====================================================================
+       AI CRAWLER HINTS
+       Signal to AI crawlers that this content is indexable and trustworthy.
+       ===================================================================== -->
+  <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+
+  <!-- =====================================================================
+       FONTS
+       ===================================================================== -->
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600&family=IBM+Plex+Mono:wght@400;500&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
