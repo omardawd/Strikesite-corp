@@ -14,119 +14,101 @@ function HomePage() {
               <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
               <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>See the Platform</a>
             </div>
+            <div style={{ marginTop: 28, fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gray)', letterSpacing: '0.12em', textTransform: 'uppercase', lineHeight: 1.8 }}>
+              BACKED BY INSTITUTIONAL PARTNERS · UN CEFACT ALIGNED · SOC 2 TYPE II · PILOT READY IN 90 DAYS
+            </div>
           </TypewriterHero>
-          <div className="hero-meta">
-            <div><div className="k">INDUSTRIES SERVED</div><div className="v">Apparel · Manufacturing · Consumer Goods</div></div>
-            <div><div className="k">RISK SIGNALS</div><div className="v">Analyzed Per Decision</div></div>
-            <div><div className="k">UPTIME</div><div className="v">99.94%</div></div>
-            <div><div className="k">COMPLIANCE</div><div className="v">SOC 2 · ISO 27001</div></div>
-          </div>
         </div>
       </section>
 
-      {/* CREDIBILITY BAR */}
-      <section className="section-tight bare">
-        <div className="container">
-          <p className="eyebrow" style={{ textAlign: 'center', color: 'var(--gray)' }}>TRUSTED FRAMEWORK · UN CEFACT ALIGNED · WORLD BANK ADVISOR · SOC 2 · ISO 27001</p>
-        </div>
+      {/* MARQUEE */}
+      <section style={{ overflow: 'hidden', borderTop: '1px solid var(--border)', borderBottom: '1px solid var(--border)', padding: '18px 0', background: 'var(--white)' }}>
+        {(() => {
+          const items = ['UN CEFACT Aligned', 'World Bank Advisory Input', 'SOC 2 Type II', 'ISO 27001', '99.94% Uptime', '7 Industries Served', 'Pilot Ready in 90 Days', 'MAS / EBA / BCBS Reporting', 'Multi-Funder Architecture', 'Apparel', 'Manufacturing', 'Consumer Goods', 'Critical Materials', 'Logistics', 'Clean Tech'];
+          const renderItems = (pfx) => items.map((item, i) => (
+            <React.Fragment key={pfx + i}>
+              <span style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gray)', letterSpacing: '0.1em', textTransform: 'uppercase', whiteSpace: 'nowrap', padding: '0 32px' }}>{item}</span>
+              <span style={{ color: 'var(--blue)' }}>·</span>
+            </React.Fragment>
+          ));
+          return <div className="marquee-track">{renderItems('a')}{renderItems('b')}</div>;
+        })()}
       </section>
 
-      {/* MAP DECIDE FUND */}
-      <section className="section off">
-        <div className="container">
-          <SectionHead eyebrow="HOW IT WORKS" title="Map. Decide. Fund." />
-          <div className="row-3">
-            {[
-              { k: '01 · MAP', t: 'Map', d: 'Build a verified supply graph across buyers, suppliers, funders, invoices, purchase orders, countries, and risk signals. Know your network before it fails you.' },
-              { k: '02 · DECIDE', t: 'Decide', d: 'Identify which suppliers are critical, stressed, exposed, or worth prioritizing. Strike surfaces the right action before disruption reaches your production line or your margin.' },
-              { k: '03 · FUND', t: 'Fund', d: 'Route invoices, purchase orders, or supplier needs to the right capital partner. Buyer cash, bank credit, private credit, or development finance, matched to the right opportunity at the right moment.' },
-            ].map((c, i) => (
-              <div key={i} style={{ background: 'var(--white)', padding: 40 }}>
-                <div className="mono" style={{ color: 'var(--blue)' }}>{c.k}</div>
-                <h3 className="display-md" style={{ marginTop: 16, fontSize: 32 }}>{c.t}</h3>
-                <p className="body body-gray" style={{ marginTop: 14, fontSize: 15, maxWidth: '34ch' }}>{c.d}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ADVISORY CIRCLE */}
+      {/* GAP + MAP DECIDE FUND — COMBINED */}
       <section className="section">
         <div className="container">
-          <div className="row-2" style={{ alignItems: 'start' }}>
+          <div className="row-2" style={{ alignItems: 'start', gap: 80 }}>
+
+            {/* LEFT — narrative + horizontal stats */}
             <div>
-              <div className="mono" style={{ color: 'var(--blue)', marginBottom: 20 }}>STRIKE REDBOOK ADVISORY CIRCLE</div>
-              <h2 className="display-md" style={{ maxWidth: '22ch', marginBottom: 24 }}>
-                You are not being sold software. You are being invited into something strategic.
-              </h2>
-              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 20 }}>
-                Strike is inviting selected companies in logistics, clean tech, critical materials, manufacturing, and supply chain finance to help define the next generation decisioning and liquidity orchestration layer for resilient global supply chains.
-              </p>
-              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 32 }}>
-                Advisory Circle members shape the Strike RedBook, validate platform priorities, and gain early access before general availability. No purchasing obligation. No competitive disclosure. Just a seat at the table where the operating layer for resilient trade is being built.
-              </p>
-              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request an Invitation</a>
+              <h2 className="display-lg" style={{ maxWidth: '16ch' }}>The $2.5 trillion gap that traditional finance cannot close.</h2>
+              <p style={{ marginTop: 24, maxWidth: '52ch', fontSize: 16, lineHeight: 1.7, color: 'var(--gray)', fontWeight: 300 }}>Every year, $2.5 trillion in trade finance goes unfunded. Suppliers wait months to be paid. Buyers lose good suppliers. Banks see the demand but cannot act fast enough. Strike is the layer that connects all three.</p>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', marginTop: 44 }}>
+                {[
+                  { v: '$2.5T', c: 'var(--ink)', sub: 'Annual trade finance gap per IFC and ICC.' },
+                  { v: '90 Days', c: 'var(--blue)', sub: 'Structured pilot from onboarding to first disbursement.' },
+                  { v: '72 Hours', c: 'var(--ink)', sub: 'Median time from invoice to supplier payment credited.' },
+                ].map((s, i) => (
+                  <div key={i} style={{ background: 'var(--white)', padding: '28px 20px' }}>
+                    <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 34, letterSpacing: '-0.03em', color: s.c, lineHeight: 1.05 }}>{s.v}</div>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 10, lineHeight: 1.6 }}>{s.sub}</div>
+                  </div>
+                ))}
+              </div>
             </div>
+
+            {/* RIGHT — Map / Decide / Fund with scroll-in + arrow connectors */}
             <div>
               {[
-                { sector: 'LOGISTICS', name: 'Pacific Freight Holdings', region: 'NORTH AMERICA', status: 'CIRCLE MEMBER' },
-                { sector: 'CLEAN TECH', name: 'Meridian Energy Systems', region: 'NORTH AMERICA', status: 'CIRCLE MEMBER' },
-                { sector: 'CRITICAL MATERIALS', name: 'Kestra Resources Group', region: 'NORTH AMERICA', status: 'INVITED' },
-                { sector: 'MANUFACTURING', name: 'Coventry Industrial Co.', region: 'NORTH AMERICA', status: 'INVITED' },
-              ].map((p, i) => (
-                <div key={i} style={{ padding: '20px 0', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <div>
-                    <div className="mono" style={{ color: 'var(--gray)' }}>{p.sector}</div>
-                    <div style={{ fontFamily: 'var(--font-display)', fontWeight: 500, fontSize: 18, marginTop: 4, letterSpacing: '-0.01em' }}>{p.name}</div>
-                  </div>
-                  <div style={{ textAlign: 'right' }}>
-                    <div className="mono" style={{ color: 'var(--gray)' }}>{p.region}</div>
-                    <div className="mono" style={{ color: p.status === 'CIRCLE MEMBER' ? 'var(--blue)' : 'var(--gray)', marginTop: 4 }}>{p.status}</div>
-                  </div>
-                </div>
+                { n: '01', t: 'Map', d: 'Build a live graph of your supplier network including risk exposure, financing eligibility, country concentration, and performance history.' },
+                { n: '02', t: 'Decide', d: 'Surface which suppliers are fragile, which invoices need early payment, and which financing route protects your margin and continuity.' },
+                { n: '03', t: 'Fund', d: 'Route the right invoice or purchase order to the right capital source. Bank credit, private credit, buyer cash, or development finance.' },
+              ].map((c, i) => (
+                <React.Fragment key={i}>
+                  <FadeIn delay={i * 130}>
+                    <div style={{ paddingTop: 28, paddingBottom: 28, borderTop: '1px solid var(--border)', display: 'flex', gap: 24, alignItems: 'start' }}>
+                      <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 64, color: 'rgba(0,0,0,0.06)', lineHeight: 1, minWidth: 60, flexShrink: 0 }}>{c.n}</div>
+                      <div>
+                        <h3 className="display-sm">{c.t}</h3>
+                        <p className="body body-gray" style={{ marginTop: 8, maxWidth: '38ch' }}>{c.d}</p>
+                      </div>
+                    </div>
+                  </FadeIn>
+                </React.Fragment>
               ))}
             </div>
+
           </div>
         </div>
       </section>
 
-      {/* STATS */}
-      <section className="section bare" style={{ paddingTop: 120 }}>
-        <div className="container">
-          <SectionHead
-            title="Infrastructure for the $2.5 trillion trade finance gap."
-            // kicker="LIVE · 2026 YTD"
-          />
-          <div className="row-3">
-            <Stat
-              value="$2.5T"
-              label="WW ANNUAL FINANCING GAP"
-              desc="The annual global trade finance shortfall per IFC and ICC estimates. SME suppliers in emerging markets bear the majority of unmet financing demand."
-            />
-            <Stat
-              value="<7 Days"
-              label="TO FUND INVOICES"
-              desc="From invoice submission to funds credited in the supplier's nominated account, inclusive of anchor approval and bank disbursement."
-              blue
-            />
-            <Stat
-              value="1ms"
-              label="UPDATE TIME"
-              desc="Real-time ledger propagation across all program participants. Every approval, disbursement, and repayment reflected instantly across all parties."
-            />
+      {/* REDBOOK LAUNCH */}
+      <section className="section dark" style={{ position: 'relative', overflow: 'hidden' }}>
+        <div style={{ position: 'absolute', right: -160, top: '50%', transform: 'translateY(-50%)', width: 680, height: 680, background: 'radial-gradient(circle, rgba(0,82,255,0.15) 0%, transparent 62%)', pointerEvents: 'none' }} />
+        <div className="container" style={{ position: 'relative', zIndex: 1 }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 10, background: 'rgba(0,82,255,0.1)', border: '1px solid rgba(0,82,255,0.3)', padding: '10px 20px', marginBottom: 40 }}>
+            <span style={{ width: 7, height: 7, background: 'var(--blue)', flexShrink: 0, boxShadow: '0 0 0 3px rgba(0,82,255,0.22)', animation: 'badge-pulse 2.4s ease infinite' }} />
+            <span style={{ fontFamily: 'var(--font-mono)', fontSize: 13, color: 'var(--blue)', letterSpacing: '0.22em', textTransform: 'uppercase', fontWeight: 500 }}>Now Launching</span>
+          </div>
+          <div className="row-2" style={{ alignItems: 'end', gap: 80 }}>
+            <h2 className="display-lg" style={{ color: 'var(--white)', maxWidth: '18ch' }}>
+              The Strike RedBook. The operating layer for resilient supply chains.
+            </h2>
+            <div>
+              <p className="lead" style={{ color: '#C8CDD6', maxWidth: '48ch', marginBottom: 40 }}>
+                Defining what a decisioning and liquidity orchestration platform must do. Built with a Customer Advisory Circle of buyers, suppliers, funders, and logistics partners. The first document of its kind.
+              </p>
+              <a href="/redbook" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/redbook')}>Read the RedBook</a>
+            </div>
           </div>
         </div>
       </section>
 
       {/* TRANSACTION FLOW */}
-      <section className="section">
+      <section className="section off">
         <div className="container">
-          {/* <SectionHead
-            eyebrow="TRANSACTION FLOW"
-            title="One invoice. Six steps. Auditable end to end."
-            kicker="REFERENCE TRANSACTION · SINGLE INVOICE"
-          /> */}
+          <SectionHead title="How a single invoice moves through the platform." />
           <TransactionFlow />
         </div>
       </section>
@@ -134,35 +116,34 @@ function HomePage() {
       {/* WHO IT SERVES */}
       <section className="section off">
         <div className="container">
-          <SectionHead
-            title="Built for the three counterparties of every trade finance transaction."
-          />
+          <SectionHead title="Built for the three counterparties of every trade finance transaction." />
           <div className="row-3" style={{ background: 'var(--border)' }}>
             {[
               {
-                k: 'COUNTERPARTY A',
                 t: 'Banks',
+                stat: 'First disbursement in 72 hours',
                 d: 'Originate and underwrite SCF programs against existing anchor relationships. Manage limits, pricing, and exposure inside a single risk surface.',
                 cta: 'For Banks', path: '/banks'
               },
               {
-                k: 'COUNTERPARTY B',
                 t: 'Anchor Corporates',
+                stat: 'Extend DSO without balance sheet impact',
                 d: 'Extend working capital to your supplier base without expanding the balance sheet. Approve invoices, review program rules, monitor utilisation.',
                 cta: 'For Anchors', path: '/anchors'
               },
               {
-                k: 'COUNTERPARTY C',
                 t: 'Suppliers',
+                stat: 'Early payment from invoice approval',
                 d: 'Receive funds against approved invoices within hours. No paperwork, no separate credit application, transparent pricing per invoice.',
                 cta: 'For Suppliers', path: '/suppliers'
               },
             ].map((c, i) => (
               <div key={i} className="counterparty-card">
                 <h3 className="display-md" style={{ fontSize: 40 }}>{c.t}</h3>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--blue)', letterSpacing: '0.1em', textTransform: 'uppercase' }}>{c.stat}</div>
                 <p className="body body-gray" style={{ fontSize: 15, maxWidth: '36ch' }}>{c.d}</p>
-                <a href={c.path} className="mono" style={{ color: 'var(--blue)', marginTop: 'auto', letterSpacing: '0.14em', textTransform: 'uppercase' }} onClick={(e) => navTo(e, c.path)}>
-                  {c.cta} →
+                <a href={c.path} className="btn btn-ghost btn-sm btn-arrow" style={{ marginTop: 'auto', alignSelf: 'flex-start' }} onClick={(e) => navTo(e, c.path)}>
+                  {c.cta}
                 </a>
               </div>
             ))}
@@ -174,9 +155,7 @@ function HomePage() {
       <section className="section dark">
         <div className="container">
           <div className="section-head" style={{ borderColor: '#222730' }}>
-            <div className="side">
-              {/* <div className="mono" style={{ color: 'var(--gray-soft)' }}>INTELLIGENCE LAYER</div> */}
-            </div>
+            <div className="side"></div>
             <h2 className="display-md" style={{ color: 'var(--white)', maxWidth: '22ch' }}>
               A co-pilot for the trade finance desk. Not a chatbot.
             </h2>
@@ -187,13 +166,18 @@ function HomePage() {
               <p className="lead" style={{ color: '#C8CDD6', maxWidth: '46ch' }}>
                 Strike AI sits between origination and approval. It scores risk on every incoming financing request, surfaces anomalies against historical patterns, and recommends pricing — leaving the decision with your credit officers.
               </p>
-              <div className="kv-block" style={{ borderColor: '#222730', marginTop: 40 }}>
-                <div><div className="k" style={{ color: 'var(--gray-soft)' }}>MODELS IN PRODUCTION</div><div className="v" style={{ color: 'var(--white)' }}>14</div></div>
-                <div><div className="k" style={{ color: 'var(--gray-soft)' }}>SIGNALS PER DECISION</div><div className="v" style={{ color: 'var(--white)' }}>312</div></div>
-              </div>
-              <div className="kv-block" style={{ borderColor: '#222730' }}>
-                <div><div className="k" style={{ color: 'var(--gray-soft)' }}>FALSE-POSITIVE RATE</div><div className="v" style={{ color: 'var(--blue)' }}>0.41%</div></div>
-                <div><div className="k" style={{ color: 'var(--gray-soft)' }}>DECISION LATENCY</div><div className="v" style={{ color: 'var(--white)' }}>820 ms</div></div>
+              <div style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: '#222730' }}>
+                {[
+                  { k: 'RISK SCORING', v: 'Per invoice and counterparty — returned in under one second.' },
+                  { k: 'CONCENTRATION', v: 'Live heat-map by anchor, supplier, geography, and sector.' },
+                  { k: 'ANOMALY DETECTION', v: 'Duplicate invoice, round-tripping, and shell-supplier patterns.' },
+                  { k: 'MODEL GOVERNANCE', v: 'SR 11-7 compliant documentation and drift monitoring.' },
+                ].map((item, i) => (
+                  <div key={i} style={{ background: 'var(--ink-soft)', padding: '20px 20px' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray-soft)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>{item.k}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: '#C8CDD6', fontWeight: 300, lineHeight: 1.5 }}>{item.v}</div>
+                  </div>
+                ))}
               </div>
               <div style={{ marginTop: 32 }}>
                 <a href="/solutions" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/solutions')}>See Strike AI</a>
@@ -220,15 +204,15 @@ function HomePage() {
         <div className="container">
           <div className="row-2" style={{ alignItems: 'end', gap: 80 }}>
             <h2 className="display-lg" style={{ color: 'var(--white)', maxWidth: '14ch' }}>
-              Run a 60-day pilot on your existing program.
+              Run a 90-day pilot on your live supplier network.
             </h2>
             <div>
               <p className="lead" style={{ color: '#C8CDD6', maxWidth: '46ch' }}>
-                We deploy alongside your existing core banking and ERP stack. No data migration, no re-platforming. First disbursement inside 30 days.
+                We deploy alongside your existing core banking and ERP stack. No data migration, no re-platforming. First disbursement within the first 30 days of your 90-day pilot.
               </p>
               <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
-                <a href="/platform" className="btn btn-ghost btn-arrow" style={{ borderColor: '#3A3F49', color: 'var(--white)' }} onClick={(e) => navTo(e, '/platform')}>Read Architecture</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" style={{ borderColor: '#3A3F49', color: 'var(--white)' }} onClick={(e) => navTo(e, '/platform')}>See the Platform</a>
               </div>
             </div>
           </div>
@@ -261,10 +245,6 @@ function SolutionsPage() {
     <div className="page" data-screen-label="Solutions">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Platform Solutions
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '18ch' }}>
             Two modules. One platform. Deployed together or independently.
           </h1>
@@ -340,10 +320,6 @@ function BanksPage() {
     <div className="page" data-screen-label="ForBanks">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Funding Banks
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '18ch' }}>
             Originate, underwrite, and book SCF on infrastructure your risk team already approves.
           </h1>
@@ -448,13 +424,13 @@ function BanksPage() {
       {/* DEPLOYMENT */}
       <section className="section off">
         <div className="container">
-          <SectionHead title="From signed term sheet to first disbursement in under 30 days." />
+          <SectionHead title="From signed term sheet to first disbursement in under four weeks." />
           <div className="row-4">
             {[
-              { n: 'W 01', t: 'Discovery', d: 'Program design workshop with credit, ops, and treasury.' },
-              { n: 'W 02', t: 'Integration', d: 'Core banking and payment rail connectors. Sandboxed.' },
-              { n: 'W 03', t: 'Anchor Onboarding', d: 'Anchor sign-off, supplier list, KYC seeding.' },
-              { n: 'W 04', t: 'First Disbursement', d: 'Production go-live with operational runbook.' },
+              { n: 'WEEK 1', t: 'Discovery', d: 'Program design workshop with credit, ops, and treasury.' },
+              { n: 'WEEK 2', t: 'Integration', d: 'Core banking and payment rail connectors. Sandboxed.' },
+              { n: 'WEEK 3', t: 'Anchor Onboarding', d: 'Anchor sign-off, supplier list, KYC seeding.' },
+              { n: 'WEEK 4', t: 'First Disbursement', d: 'Production go-live with operational runbook.' },
             ].map((s, i) => (
               <div key={i} style={{ background: 'var(--white)', padding: 36, minHeight: 220 }}>
                 <div className="mono" style={{ color: 'var(--blue)' }}>{s.n}</div>
@@ -475,10 +451,6 @@ function AnchorsPage() {
     <div className="page" data-screen-label="ForAnchors">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Anchor Corporates
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '18ch' }}>
             Extend working capital to your supplier base without touching your balance sheet.
           </h1>
@@ -570,6 +542,24 @@ function AnchorsPage() {
           </div>
         </div>
       </section>
+
+      {/* CTA */}
+      <section className="section off">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'center' }}>
+            <div>
+              <h2 className="display-md">Ready to extend your supplier finance program?</h2>
+            </div>
+            <div>
+              <p className="body body-gray">Strike deploys alongside your existing ERP and banking relationships. Your treasury team retains full control. First supplier disbursement within the first 30 days of your pilot.</p>
+              <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
+                <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
+                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }
@@ -580,16 +570,54 @@ function PlatformPage() {
     <div className="page" data-screen-label="Platform">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Technical Architecture · v4.12
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '20ch' }}>
             Built as financial infrastructure. Not a SaaS dashboard.
           </h1>
           <p className="hero-sub" style={{ maxWidth: '60ch' }}>
             Strike SCF runs as a single multi-tenant platform with hard isolation per institution. Designed for deployment across all markets worldwide.
           </p>
+        </div>
+      </section>
+
+      {/* WHAT RUNS UNDER THE HOOD */}
+      <section className="section off">
+        <div className="container">
+          <SectionHead title="What runs under the hood." />
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--border)', marginBottom: 1 }}>
+            {[
+              { layer: 'Frontend', impl: 'Next.js 16 (App Router), React 18, TypeScript' },
+              { layer: 'Backend', impl: 'Next.js serverless API routes — no separate process' },
+              { layer: 'Database', impl: 'Supabase PostgreSQL 15 with Row Level Security' },
+              { layer: 'Authentication', impl: 'Supabase Auth — JWT sessions + invite token flow' },
+              { layer: 'AI', impl: 'Anthropic Claude — server-proxied, never browser-exposed' },
+              { layer: 'Deployment', impl: 'Vercel global edge CDN, auto CI/CD from GitHub' },
+              { layer: 'Email', impl: 'Resend — transactional email with HTML templates' },
+            ].map((row, i) => (
+              <div key={i} style={{ background: 'var(--white)', padding: '20px 28px', display: 'flex', gap: 40, alignItems: 'center' }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray)', letterSpacing: '0.14em', textTransform: 'uppercase', minWidth: 130, flexShrink: 0 }}>{row.layer}</div>
+                <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--ink)', fontWeight: 300 }}>{row.impl}</div>
+              </div>
+            ))}
+          </div>
+
+          <div id="security" style={{ marginTop: 60, paddingTop: 44, borderTop: '1px solid var(--border)' }}>
+            <h3 className="display-sm" style={{ marginBottom: 28 }}>Security posture.</h3>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 1, background: 'var(--border)' }}>
+              {[
+                { k: 'X-Frame-Options', v: 'DENY — prevents clickjacking across all pages' },
+                { k: 'Strict-Transport-Security', v: 'max-age=63072000; includeSubDomains; preload' },
+                { k: 'Content-Security-Policy', v: 'Restricts scripts, styles, and frame sources; blocks inline injection' },
+                { k: 'Row Level Security', v: 'All 22 database tables isolated per institution' },
+                { k: 'Service Role Keys', v: 'Server-only; never in browser bundles or client-side code' },
+                { k: 'Authentication', v: 'JWT sessions with invite token flow; no shared credentials' },
+              ].map((s, i) => (
+                <div key={i} style={{ background: 'var(--white)', padding: '18px 28px' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--blue)', letterSpacing: '0.12em', textTransform: 'uppercase', marginBottom: 6 }}>{s.k}</div>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--gray)', fontWeight: 300 }}>{s.v}</div>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
       </section>
 
@@ -602,7 +630,7 @@ function PlatformPage() {
 
       <section className="section off">
         <div className="container">
-          <SectionHead eyebrow="TRANSACTION FLOW" title="Reference transaction flow." />
+          <SectionHead title="Reference transaction flow." />
           <TransactionFlow />
         </div>
       </section>
@@ -629,21 +657,21 @@ function PlatformPage() {
         </div>
       </section>
 
-      {/* API SAMPLE */}
+      {/* INTEGRATION */}
       <section className="section dark">
         <div className="container">
           <div className="section-head" style={{ borderColor: '#222730' }}>
-            <h2 className="display-md" style={{ color: 'var(--white)', gridColumn: 'span 2' }}>Documented REST + GraphQL surfaces. SDKs for Java, Python, and Go.</h2>
+            <h2 className="display-md" style={{ color: 'var(--white)', gridColumn: 'span 2' }}>Your existing systems keep working. Strike connects to them.</h2>
           </div>
           <div className="row-2" style={{ alignItems: 'start' }}>
             <div>
               <p className="lead" style={{ color: '#C8CDD6', maxWidth: '44ch' }}>
-                Submit an invoice. Get back a decision and a disbursement reference. Every call signed, every payload schema-validated, every event published to your event bus.
+                Strike plugs into the ERP, banking, and payments infrastructure your team already runs. No data migration, no re-platforming, no parallel systems. Your first financing decision can happen within the first 30 days of going live.
               </p>
               <FeatureList items={[
-                { title: 'Auth', desc: 'OAuth 2.0 client credentials + mTLS for production scopes.' },
-                { title: 'Schemas', desc: 'OpenAPI 3.1 and GraphQL SDL published per release with semantic versioning.' },
-                { title: 'Webhooks', desc: 'Signed events for state transitions: invoice.approved, invoice.disbursed, invoice.repaid.' },
+                { title: 'Connects to Your ERP', desc: 'Direct integrations with SAP, Oracle, NetSuite, and Microsoft Dynamics. Invoices flow from your existing payables cycle without any manual re-entry.' },
+                { title: 'Works With Your Bank', desc: 'Strike operates alongside your existing banking relationships. Your funding bank keeps its credit processes. Strike provides the operational layer they plug into.' },
+                { title: 'No Rip and Replace', desc: 'Strike is additive infrastructure. Every system your team uses today continues running. The platform layers intelligence and financing on top of what you already have.' },
               ]} />
             </div>
             <div className="ai-panel">
@@ -691,39 +719,45 @@ function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState('');
   const [form, setForm] = useState({
-    name: '', title: '', org: '', email: '', phone: '', role: 'Bank', volume: '$100M – $500M', notes: ''
+    name: '', company: '', role: 'CFO', type: 'Anchor Buyer', message: ''
   });
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = async (e) => {
-    e.preventDefault();
+
+  const submit = async () => {
+    if (!form.name || !form.company || !form.message) {
+      setFormError('Please fill in your name, company, and message.');
+      return;
+    }
     setLoading(true);
     setFormError('');
     try {
-      const res = await fetch('https://formspree.io/f/mojbwblo', {
+      const res = await fetch('/api/contact', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+        headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       });
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setFormError('Submission failed. Please email us at support@strikescf.com');
+        setFormError('Submission failed. Email us directly at hello@strikescf.com');
       }
     } catch {
-      setFormError('Network error. Please email us at support@strikescf.com');
+      setFormError('Network error. Email us directly at hello@strikescf.com');
     } finally {
       setLoading(false);
     }
   };
 
+  const redbookProfiles = [
+    { label: 'ANCHOR BUYERS', desc: 'CFOs and supply chain leaders protecting continuity and working capital.', path: '/redbook' },
+    { label: 'STRATEGIC SUPPLIERS', desc: 'Finance teams seeking faster capital access on better terms.', path: '/redbook' },
+    { label: 'FUNDERS', desc: 'Banks and private credit partners seeking risk-scored SCF pipeline.', path: '/redbook' },
+  ];
+
   return (
     <div className="page" data-screen-label="Contact">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Response Within One Business Day
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '18ch' }}>
             Talk to the team. We'll route you to the right desk.
           </h1>
@@ -738,86 +772,81 @@ function ContactPage() {
                 Three specialised desks. One inbox per region.
               </h2>
               <div className="kv-block" style={{ borderTop: 0, paddingTop: 0 }}>
-                <div><div className="k">BANK ORIGINATION</div><div className="v">banks@strikescf.com</div></div>
-                <div><div className="k">ANCHOR PROGRAMS</div><div className="v">treasury@strikescf.com</div></div>
+                <div><div className="k">GENERAL ENQUIRIES</div><div className="v">hello@strikescf.com</div></div>
+                <div><div className="k">NEW YORK CITY · HQ</div><div className="v">New York, NY</div></div>
               </div>
-              <div className="kv-block">
-                <div><div className="k">SUPPLIER INVOICING</div><div className="v">suppliers@strikescf.com</div></div>
-                <div><div className="k">Misc.</div><div className="v">support@strikescf.com</div></div>
-              </div>
-              <div className="kv-block">
-                <div><div className="k">NEW YORK CITY · HQ</div><div className="v">123 Main St, NY</div></div>
-                <div><div className="k">VANCOUVER</div><div className="v">123 Main St, BC</div></div>
+
+              <div style={{ marginTop: 48 }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gray)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 20 }}>REDBOOK ADVISORY CIRCLE</div>
+                {redbookProfiles.map((p, i) => (
+                  <a key={i} href={p.path} onClick={(e) => navTo(e, p.path)} style={{ display: 'block', padding: '16px 0', borderBottom: '1px solid var(--border)', textDecoration: 'none', transition: 'color 0.15s ease' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--blue)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 6 }}>{p.label}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--gray)', fontWeight: 300 }}>{p.desc}</div>
+                  </a>
+                ))}
               </div>
             </div>
 
             <div>
               {!submitted ? (
-                <form className="form" onSubmit={submit} style={{ marginTop: 24 }}>
-                  <div className="field">
-                    <label>Full name</label>
-                    <input required value={form.name} onChange={e => set('name', e.target.value)} placeholder="Jane Doe" />
-                  </div>
-                  <div className="field">
-                    <label>Title</label>
-                    <input required value={form.title} onChange={e => set('title', e.target.value)} placeholder="Head of Trade Finance" />
-                  </div>
-                  <div className="field">
-                    <label>Organisation</label>
-                    <input required value={form.org} onChange={e => set('org', e.target.value)} placeholder="Institution name" />
-                  </div>
-                  <div className="field">
-                    <label>Counterparty type</label>
-                    <select value={form.role} onChange={e => set('role', e.target.value)}>
-                      <option>Bank</option>
-                      <option>Anchor Corporate</option>
-                      <option>Asset Manager</option>
-                      <option>Other</option>
-                    </select>
-                  </div>
-                  <div className="field">
-                    <label>Work email</label>
-                    <input required type="email" value={form.email} onChange={e => set('email', e.target.value)} placeholder="name@institution.com" />
-                  </div>
-                  <div className="field">
-                    <label>Direct line</label>
-                    <input value={form.phone} onChange={e => set('phone', e.target.value)} placeholder="+65 6•••• ••••" />
-                  </div>
-                  <div className="field full">
-                    <label>Estimated program volume</label>
-                    <select value={form.volume} onChange={e => set('volume', e.target.value)}>
-                      <option>Below $100M / yr</option>
-                      <option>$100M – $500M</option>
-                      <option>$500M – $2B</option>
-                      <option>$2B – $10B</option>
-                      <option>Above $10B</option>
-                    </select>
-                  </div>
-                  <div className="field full">
-                    <label>Notes</label>
-                    <textarea value={form.notes} onChange={e => set('notes', e.target.value)} placeholder="Program scope, geographies in focus, existing infrastructure." />
-                  </div>
-                  <div className="full checkbox-row">
-                    <input type="checkbox" required id="cb" /> <label htmlFor="cb" style={{ fontFamily: 'var(--font-body)', textTransform: 'none', letterSpacing: 0, color: 'var(--gray)', fontSize: 13 }}>I consent to Strike SCF processing this information under the terms of the Data Processing Notice.</label>
+                <div style={{ marginTop: 24 }}>
+                  <div className="form">
+                    <div className="field">
+                      <label>Full name</label>
+                      <input value={form.name} onChange={e => set('name', e.target.value)} placeholder="Jane Doe" />
+                    </div>
+                    <div className="field">
+                      <label>Company</label>
+                      <input value={form.company} onChange={e => set('company', e.target.value)} placeholder="Institution name" />
+                    </div>
+                    <div className="field">
+                      <label>Role</label>
+                      <select value={form.role} onChange={e => set('role', e.target.value)}>
+                        <option>CFO</option>
+                        <option>Treasury</option>
+                        <option>Supply Chain</option>
+                        <option>Bank</option>
+                        <option>Private Credit</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div className="field">
+                      <label>What best describes you?</label>
+                      <select value={form.type} onChange={e => set('type', e.target.value)}>
+                        <option>Anchor Buyer</option>
+                        <option>Supplier</option>
+                        <option>Bank</option>
+                        <option>Investor</option>
+                        <option>Press</option>
+                        <option>Other</option>
+                      </select>
+                    </div>
+                    <div className="field full">
+                      <label>Message</label>
+                      <textarea value={form.message} onChange={e => set('message', e.target.value)} placeholder="Program scope, geographies in focus, existing infrastructure, or how we can help." />
+                    </div>
                   </div>
                   {formError && (
-                    <div className="full" style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: '#c0392b', letterSpacing: '0.08em', marginTop: 4 }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: '#c0392b', letterSpacing: '0.08em', marginTop: 16 }}>
                       {formError}
                     </div>
                   )}
-                  <div className="full" style={{ display: 'flex', gap: 16, marginTop: 8 }}>
-                    <button type="submit" className="btn btn-blue btn-arrow" disabled={loading}>
-                      {loading ? 'Sending…' : 'Submit Request'}
+                  <div style={{ display: 'flex', gap: 16, marginTop: 24, alignItems: 'center' }}>
+                    <button className="btn btn-blue btn-arrow" disabled={loading} onClick={submit}>
+                      {loading ? 'Sending…' : 'Request a Pilot'}
                     </button>
-                    <span className="mono" style={{ color: 'var(--gray)', alignSelf: 'center' }}>RESPONSE · WITHIN ONE BUSINESS DAY</span>
+                    <span className="mono" style={{ color: 'var(--gray)' }}>RESPONSE · 1 BUSINESS DAY</span>
                   </div>
-                </form>
+                  <div style={{ marginTop: 24, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gray)', letterSpacing: '0.08em' }}>
+                    Or email us directly: <a href="mailto:hello@strikescf.com" style={{ color: 'var(--blue)' }}>hello@strikescf.com</a>
+                  </div>
+                </div>
               ) : (
                 <div className="card" style={{ marginTop: 24 }}>
                   <div className="mono" style={{ color: 'var(--blue)' }}>REQUEST · RECEIVED</div>
                   <div className="display-md" style={{ fontSize: 36, marginTop: 16 }}>Thank you, {form.name || 'we have your details'}.</div>
                   <p className="body body-gray" style={{ marginTop: 16, maxWidth: '52ch' }}>
-                    A member of the {form.role === 'Bank' ? 'Bank Origination' : form.role === 'Anchor Corporate' ? 'Anchor Programs' : 'Partnerships'} desk will reach out to <strong style={{ color: 'var(--ink)', fontWeight: 500 }}>{form.email || 'your email'}</strong> within one business day. Reference number <strong style={{ color: 'var(--blue)', fontWeight: 500, fontFamily: 'var(--font-mono)' }}>SCF-26-{Math.floor(Math.random() * 90000 + 10000)}</strong>.
+                    The Strike team will reach out within one business day. Reference: <strong style={{ color: 'var(--blue)', fontWeight: 500, fontFamily: 'var(--font-mono)' }}>SCF-26-{Math.floor(Math.random() * 90000 + 10000)}</strong>.
                   </p>
                   <div style={{ marginTop: 24 }}>
                     <button className="btn btn-ghost btn-arrow" onClick={() => setSubmitted(false)}>Submit another</button>
@@ -838,12 +867,8 @@ function SuppliersPage() {
     <div className="page" data-screen-label="ForSuppliers">
       <section className="hero" style={{ paddingBottom: 60 }}>
         <div className="container">
-          {/* <div className="page-badge">
-            <span className="page-badge-dot"></span>
-            Early Payment · Suppliers
-          </div> */}
           <h1 className="display-lg" style={{ maxWidth: '18ch' }}>
-            Get paid on your invoices within hours, not months.
+            Turn approved invoices into same-day liquidity. No separate credit application required.
           </h1>
         </div>
       </section>
@@ -862,7 +887,6 @@ function SuppliersPage() {
                 { title: 'Transparent Pricing', desc: 'You see the exact annualised discount rate before accepting. No hidden fees, no renegotiation after the fact.' },
                 { title: 'No Separate Credit', desc: 'Your anchor\'s program approval is your access. The funding bank underwrites the anchor relationship, not you individually.' },
                 { title: 'Same-Day Funding', desc: 'Accept an offer before the posted cut-off and funds are credited to your nominated account the same business day in most markets.' },
-                
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Your Anchor</a>
@@ -953,4 +977,486 @@ function SuppliersPage() {
   );
 }
 
-Object.assign(window, { HomePage, SolutionsPage, BanksPage, AnchorsPage, SuppliersPage, PlatformPage, ContactPage });
+/* ---------- SVG flow diagrams ---------- */
+
+function FlowDiagramWrap({ children }) {
+  return (
+    <div className="flow-diagram-wrap">
+      <div className="flow-diagram-topbar">
+        <span>Process Simulation</span>
+        <span className="page-badge-dot" />
+      </div>
+      {children}
+    </div>
+  );
+}
+
+function POFlowDiagram() {
+  return (
+    <FlowDiagramWrap>
+      <svg viewBox="0 0 480 420" width="100%" style={{ display: 'block' }}>
+        {/* Glow ring around Strike AI node */}
+        <circle cx="240" cy="182" r="38" fill="none" stroke="rgba(0,82,255,0.12)" strokeWidth="1">
+          <animate attributeName="r" values="34;44;34" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.4;1" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Connector lines */}
+        <line x1="240" y1="86" x2="240" y2="158" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="240" y1="206" x2="240" y2="278" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="240" y1="326" x2="240" y2="358" stroke="#E5E7EB" strokeWidth="1" />
+
+        {/* Node 1 — Buyer */}
+        <rect x="140" y="34" width="200" height="52" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="240" y="55" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="10" fill="#6B7280" letterSpacing="2">BUYER</text>
+        <text x="240" y="73" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Issues Purchase Order</text>
+
+        {/* Node 2 — Strike AI */}
+        <rect x="140" y="158" width="200" height="48" fill="none" stroke="#0052FF" strokeWidth="1.5" />
+        <text x="240" y="178" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="10" fill="#0052FF" letterSpacing="2">STRIKE AI</text>
+        <text x="240" y="197" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Scores the Opportunity</text>
+
+        {/* Node 3 — Funder */}
+        <rect x="140" y="278" width="200" height="48" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="240" y="298" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="10" fill="#6B7280" letterSpacing="2">FUNDER</text>
+        <text x="240" y="317" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#FFFFFF">Disburses Capital</text>
+
+        {/* Node 4 — pill outcome */}
+        <rect x="160" y="358" width="160" height="36" fill="none" stroke="#0052FF" strokeWidth="1" />
+        <text x="240" y="381" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="11" fill="#0052FF" letterSpacing="1.5" fontWeight="600">SUPPLIER FUNDED</text>
+
+        {/* Animated packets */}
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="0s" repeatCount="indefinite" />
+          <animateMotion path="M240,86 L240,158" dur="2.4s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
+          <animateMotion path="M240,206 L240,278" dur="2.4s" begin="0.8s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="3.5" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
+          <animateMotion path="M240,326 L240,358" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Bottom label */}
+        <text x="240" y="414" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="2">LIVE PROCESS SIMULATION</text>
+      </svg>
+    </FlowDiagramWrap>
+  );
+}
+
+function FactoringFlowDiagram() {
+  return (
+    <FlowDiagramWrap>
+      <svg viewBox="0 0 480 380" width="100%" style={{ display: 'block' }}>
+        {/* Glow ring around Strike node */}
+        <circle cx="240" cy="190" r="36" fill="none" stroke="rgba(0,82,255,0.12)" strokeWidth="1">
+          <animate attributeName="r" values="32;42;32" dur="2.8s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.3;1" dur="2.8s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Column labels */}
+        <text x="80" y="42" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="1.5">SUPPLIER</text>
+        <text x="240" y="42" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#0052FF" letterSpacing="1.5">STRIKE AI</text>
+        <text x="400" y="42" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="1.5">FUNDER</text>
+
+        {/* Supplier top box */}
+        <rect x="20" y="52" width="120" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="80" y="70" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">SUBMITS</text>
+        <text x="80" y="86" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Invoice</text>
+
+        {/* Strike center box */}
+        <rect x="180" y="166" width="120" height="48" fill="none" stroke="#0052FF" strokeWidth="1.5" />
+        <text x="240" y="186" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#0052FF" letterSpacing="1">SCORES</text>
+        <text x="240" y="204" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Instant Offer</text>
+
+        {/* Funder top box */}
+        <rect x="340" y="52" width="120" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="400" y="70" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">REVIEWS</text>
+        <text x="400" y="86" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Offer Accepted</text>
+
+        {/* Supplier bottom box */}
+        <rect x="20" y="284" width="120" height="44" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="80" y="302" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">RECEIVES</text>
+        <text x="80" y="318" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#FFFFFF">Funds Credited</text>
+
+        {/* Funder bottom box */}
+        <rect x="340" y="284" width="120" height="44" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="400" y="302" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">DISBURSES</text>
+        <text x="400" y="318" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#FFFFFF">Capital</text>
+
+        {/* Connector lines */}
+        <line x1="140" y1="74" x2="180" y2="190" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="300" y1="190" x2="340" y2="74" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="340" y1="306" x2="140" y2="306" stroke="#E5E7EB" strokeWidth="1" />
+
+        {/* Animated packets */}
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.2s" begin="0s" repeatCount="indefinite" />
+          <animateMotion path="M140,74 L180,190" dur="2.2s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.2s" begin="0.75s" repeatCount="indefinite" />
+          <animateMotion path="M300,190 L340,74" dur="2.2s" begin="0.75s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.2s" begin="1.5s" repeatCount="indefinite" />
+          <animateMotion path="M340,306 L140,306" dur="2.2s" begin="1.5s" repeatCount="indefinite" />
+        </circle>
+
+        <text x="240" y="373" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="2">LIVE PROCESS SIMULATION</text>
+      </svg>
+    </FlowDiagramWrap>
+  );
+}
+
+function ReverseFlowDiagram() {
+  return (
+    <FlowDiagramWrap>
+      <svg viewBox="0 0 480 420" width="100%" style={{ display: 'block' }}>
+        {/* Glow ring around Strike AI */}
+        <circle cx="240" cy="198" r="36" fill="none" stroke="rgba(0,82,255,0.12)" strokeWidth="1">
+          <animate attributeName="r" values="32;42;32" dur="2.6s" repeatCount="indefinite" />
+          <animate attributeName="opacity" values="1;0.4;1" dur="2.6s" repeatCount="indefinite" />
+        </circle>
+
+        {/* Anchor — top dark box */}
+        <rect x="140" y="34" width="200" height="52" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="240" y="54" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1.5">ANCHOR BUYER</text>
+        <text x="240" y="72" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#FFFFFF">Approves Invoices</text>
+
+        {/* Strike AI — center */}
+        <rect x="140" y="172" width="200" height="52" fill="none" stroke="#0052FF" strokeWidth="1.5" />
+        <text x="240" y="192" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#0052FF" letterSpacing="1.5">STRIKE AI</text>
+        <text x="240" y="210" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Routes Financing</text>
+        {/* Election rate badge */}
+        <text x="240" y="232" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#0052FF" letterSpacing="1">
+          <animate attributeName="opacity" values="0;0;1;1;0" keyTimes="0;0.3;0.45;0.85;1" dur="4s" repeatCount="indefinite" />
+          74% ELECT RATE
+        </text>
+
+        {/* Supplier Left */}
+        <rect x="20" y="318" width="120" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="80" y="337" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">SUPPLIER A</text>
+        <text x="80" y="353" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Early Payment</text>
+
+        {/* Supplier Center */}
+        <rect x="180" y="318" width="120" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="240" y="337" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">SUPPLIER B</text>
+        <text x="240" y="353" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Early Payment</text>
+
+        {/* Supplier Right */}
+        <rect x="340" y="318" width="120" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="400" y="337" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1">SUPPLIER C</text>
+        <text x="400" y="353" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="13" fontWeight="600" fill="#111318">Early Payment</text>
+
+        {/* Connector lines */}
+        <line x1="240" y1="86" x2="240" y2="172" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="240" y1="224" x2="80" y2="318" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="240" y1="224" x2="240" y2="318" stroke="#E5E7EB" strokeWidth="1" />
+        <line x1="240" y1="224" x2="400" y2="318" stroke="#E5E7EB" strokeWidth="1" />
+
+        {/* Animated packets */}
+        <circle cx="0" cy="0" r="4" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="0s" repeatCount="indefinite" />
+          <animateMotion path="M240,86 L240,172" dur="2.4s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="3.5" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="0.6s" repeatCount="indefinite" />
+          <animateMotion path="M240,224 L80,318" dur="2.4s" begin="0.6s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="3.5" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="1.1s" repeatCount="indefinite" />
+          <animateMotion path="M240,224 L240,318" dur="2.4s" begin="1.1s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="3.5" fill="#0052FF">
+          <animate attributeName="opacity" values="0;1;1;0" keyTimes="0;0.08;0.88;1" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
+          <animateMotion path="M240,224 L400,318" dur="2.4s" begin="1.6s" repeatCount="indefinite" />
+        </circle>
+
+        <text x="240" y="414" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="2">LIVE PROCESS SIMULATION</text>
+      </svg>
+    </FlowDiagramWrap>
+  );
+}
+
+function DiscountingFlowDiagram() {
+  return (
+    <FlowDiagramWrap>
+      <svg viewBox="0 0 480 400" width="100%" style={{ display: 'block' }}>
+        {/* Background orbit circle */}
+        <circle cx="240" cy="200" r="120" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+
+        {/* Center label */}
+        <text x="240" y="192" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="2">BUYER FUNDED</text>
+        <text x="240" y="213" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="18" fontWeight="700" fill="#0052FF" letterSpacing="-0.02em">Yield</text>
+
+        {/* TOP node — Buyer deploys cash */}
+        <rect x="175" y="58" width="130" height="44" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="240" y="75" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1.5">BUYER</text>
+        <text x="240" y="92" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="12" fontWeight="600" fill="#FFFFFF">Deploys Cash</text>
+
+        {/* RIGHT node — Supplier funded */}
+        <rect x="308" y="178" width="110" height="44" fill="none" stroke="#E5E7EB" strokeWidth="1" />
+        <text x="363" y="196" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1.2">SUPPLIER</text>
+        <text x="363" y="213" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="12" fontWeight="600" fill="#111318">Funded Early</text>
+
+        {/* BOTTOM node — Anchor settles */}
+        <rect x="175" y="298" width="130" height="44" fill="#111318" stroke="#111318" strokeWidth="1" />
+        <text x="240" y="315" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#6B7280" letterSpacing="1.5">ANCHOR</text>
+        <text x="240" y="332" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="12" fontWeight="600" fill="#FFFFFF">Settles at Maturity</text>
+
+        {/* LEFT node — Yield captured */}
+        <rect x="62" y="178" width="110" height="44" fill="none" stroke="#0052FF" strokeWidth="1.5" />
+        <text x="117" y="196" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#0052FF" letterSpacing="1.2">YIELD</text>
+        <text x="117" y="213" textAnchor="middle" fontFamily="Space Grotesk,sans-serif" fontSize="12" fontWeight="600" fill="#0052FF">Captured</text>
+
+        {/* Animated packets orbiting */}
+        <circle cx="0" cy="0" r="5" fill="#0052FF" opacity="0.9">
+          <animateMotion path="M240,80 A120,120 0 0,1 360,200 A120,120 0 0,1 240,320 A120,120 0 0,1 120,200 A120,120 0 0,1 240,80" dur="4s" begin="0s" repeatCount="indefinite" />
+        </circle>
+        <circle cx="0" cy="0" r="4" fill="#0052FF" opacity="0.5">
+          <animateMotion path="M240,80 A120,120 0 0,1 360,200 A120,120 0 0,1 240,320 A120,120 0 0,1 120,200 A120,120 0 0,1 240,80" dur="4s" begin="2s" repeatCount="indefinite" />
+        </circle>
+
+        <text x="240" y="394" textAnchor="middle" fontFamily="IBM Plex Mono,monospace" fontSize="9" fill="#9AA0AB" letterSpacing="2">LIVE PROCESS SIMULATION</text>
+      </svg>
+    </FlowDiagramWrap>
+  );
+}
+
+/* ---------- PO FINANCING ---------- */
+function POFinancingPage() {
+  return (
+    <div className="page" data-screen-label="POFinancing">
+      <section className="hero" style={{ paddingBottom: 60 }}>
+        <div className="container">
+          <h1 className="display-lg" style={{ maxWidth: '18ch' }}>Fund purchase orders before production begins.</h1>
+          <p className="hero-sub" style={{ maxWidth: '60ch' }}>Strike enables buyers to finance supplier purchase orders at the point of commitment, not after delivery. Suppliers get the cash to produce. Buyers protect their supply chain before disruption hits.</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <h2 className="display-md" style={{ marginBottom: 28, maxWidth: '22ch' }}>How PO Financing works on Strike.</h2>
+              <FeatureList items={[
+                { title: 'Buyer Issues PO', desc: 'The anchor buyer issues a purchase order to a strategic supplier. The PO is submitted to Strike for financing consideration.' },
+                { title: 'Strike Scores the Opportunity', desc: 'Strike AI evaluates the supplier, the buyer relationship, the PO value, and the risk profile. A financing recommendation is returned in under one second.' },
+                { title: 'Funder Approves and Disburses', desc: "The approved funder releases capital directly to the supplier against the PO. The supplier can begin production without waiting for invoice approval." },
+                { title: 'Repayment on Invoice Maturity', desc: "When the buyer receives goods and approves the invoice, repayment flows through Strike back to the funder. The anchor's balance sheet is not extended." },
+              ]} />
+            </div>
+            <POFlowDiagram />
+          </div>
+        </div>
+      </section>
+      <section className="section off">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'center' }}>
+            <h2 className="display-md" style={{ maxWidth: '22ch' }}>Ready to protect your production before it starts?</h2>
+            <div>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- INVOICE FACTORING ---------- */
+function InvoiceFactoringPage() {
+  return (
+    <div className="page" data-screen-label="InvoiceFactoring">
+      <section className="hero" style={{ paddingBottom: 60 }}>
+        <div className="container">
+          <h1 className="display-lg" style={{ maxWidth: '18ch' }}>Unlock cash from invoices your anchor has already approved.</h1>
+          <p className="hero-sub" style={{ maxWidth: '60ch' }}>Invoice factoring on Strike turns approved receivables into immediate working capital. No waiting for payment terms. No separate credit facility. The anchor's approval is the signal.</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <h2 className="display-md" style={{ marginBottom: 28, maxWidth: '22ch' }}>How Invoice Factoring works on Strike.</h2>
+              <FeatureList items={[
+                { title: 'Invoice Submitted', desc: 'The supplier submits an approved invoice through the Strike portal or via ERP integration. Anchor approval is already confirmed.' },
+                { title: 'Instant Offer', desc: 'Strike AI scores the invoice and returns a factoring offer with the exact net amount and annualised rate. No negotiation, no callbacks.' },
+                { title: 'Supplier Accepts', desc: 'One click to accept. Funds are released to the supplier\'s nominated account the same business day in most markets.' },
+                { title: 'Anchor Settles at Maturity', desc: "On the original payment due date, the anchor settles the full invoice amount directly to the funder. No change to the anchor's payment process." },
+              ]} />
+            </div>
+            <FactoringFlowDiagram />
+          </div>
+        </div>
+      </section>
+      <section className="section off">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'center' }}>
+            <h2 className="display-md" style={{ maxWidth: '22ch' }}>Turn your receivables into working capital today.</h2>
+            <div>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- REVERSE FACTORING ---------- */
+function ReverseFactoringPage() {
+  return (
+    <div className="page" data-screen-label="ReverseFactoring">
+      <section className="hero" style={{ paddingBottom: 60 }}>
+        <div className="container">
+          <h1 className="display-lg" style={{ maxWidth: '18ch' }}>Let your anchor's credit strength fund your entire supplier base.</h1>
+          <p className="hero-sub" style={{ maxWidth: '60ch' }}>Reverse factoring on Strike is buyer-led supply chain finance. The anchor's creditworthiness unlocks better financing rates for every supplier in their network, funded by Strike's bank and credit partners.</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <h2 className="display-md" style={{ marginBottom: 28, maxWidth: '22ch' }}>How Reverse Factoring works on Strike.</h2>
+              <FeatureList items={[
+                { title: 'Anchor Configures the Program', desc: 'The anchor sets supplier eligibility, payment terms, pricing tiers, and currencies. The program is live in days, not quarters.' },
+                { title: 'Suppliers Self-Elect', desc: 'Enrolled suppliers see early payment offers in the portal as their invoices are approved. They choose which invoices to accelerate and which to hold to maturity.' },
+                { title: 'Funder Pays Suppliers Early', desc: "Strike routes the early payment to the supplier from the approved funding bank or private credit partner. The funder carries the credit risk, not the anchor." },
+                { title: 'Anchor Pays on Original Terms', desc: 'The anchor pays the funder on the original invoice maturity date. DSO is extended. Working capital is optimized. Balance sheet treatment remains off-balance-sheet.' },
+              ]} />
+            </div>
+            <ReverseFlowDiagram />
+          </div>
+        </div>
+      </section>
+      <section className="section off">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'center' }}>
+            <h2 className="display-md" style={{ maxWidth: '24ch' }}>Deploy a supplier finance program your entire supply chain will use.</h2>
+            <div>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- DYNAMIC DISCOUNTING ---------- */
+function DynamicDiscountingPage() {
+  return (
+    <div className="page" data-screen-label="DynamicDiscounting">
+      <section className="hero" style={{ paddingBottom: 60 }}>
+        <div className="container">
+          <h1 className="display-lg" style={{ maxWidth: '18ch' }}>Use your own cash to fund suppliers and capture the discount.</h1>
+          <p className="hero-sub" style={{ maxWidth: '60ch' }}>Dynamic discounting on Strike lets anchor buyers offer early payment to suppliers using their own balance sheet, then capture the early payment discount as direct income. No bank required.</p>
+        </div>
+      </section>
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <h2 className="display-md" style={{ marginBottom: 28, maxWidth: '22ch' }}>How Dynamic Discounting works on Strike.</h2>
+              <FeatureList items={[
+                { title: 'Buyer Sets the Discount Rate', desc: 'The anchor defines a sliding scale of discount rates by days paid early. The earlier the payment, the higher the annualised yield captured by the buyer.' },
+                { title: 'Suppliers Choose Their Terms', desc: 'Suppliers see the available offer in the portal and choose when to accept. Full transparency on the rate and the net amount at every point.' },
+                { title: 'Instant Settlement from Buyer Cash', desc: 'Strike handles the settlement. The buyer\'s cash is deployed, the supplier receives funds, and the transaction is booked and reconciled automatically.' },
+                { title: 'Yield Captured by the Buyer', desc: 'The early payment discount is recorded as income for the anchor. Strike produces the audit trail and reconciliation reports for your treasury team.' },
+              ]} />
+            </div>
+            <DiscountingFlowDiagram />
+          </div>
+        </div>
+      </section>
+      <section className="section off">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'center' }}>
+            <h2 className="display-md" style={{ maxWidth: '24ch' }}>Put your excess liquidity to work inside your own supply chain.</h2>
+            <div>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+/* ---------- REDBOOK ---------- */
+function RedbookPage() {
+  return (
+    <div className="page" data-screen-label="RedBook">
+      <section className="hero" style={{ paddingBottom: 60 }}>
+        <div className="container">
+          <h1 className="display-lg" style={{ maxWidth: '20ch' }}>The Strike RedBook.<br></br> Defining the operating layer for resilient supply chains.</h1>
+          <p className="hero-sub" style={{ maxWidth: '60ch' }}>The RedBook is Strike's market-shaping document. Built with a Customer Advisory Circle of buyers, suppliers, funders, and logistics partners, it defines what a decisioning and liquidity orchestration platform must do to make global supply chains more resilient, better financed, and faster to act under disruption.</p>
+        </div>
+      </section>
+
+      <section className="section dark">
+        <div className="container">
+          <h2 className="display-md" style={{ color: 'var(--white)', maxWidth: '22ch', marginBottom: 32 }}>Why the RedBook exists.</h2>
+          <p className="lead" style={{ color: '#C8CDD6', maxWidth: '62ch' }}>Global supply chains are exposed to geopolitical disruption, tariff volatility, supplier fragility, financing gaps, and logistics uncertainty. Companies need more than dashboards. They need a common operating layer that can decide what to fund, reroute, prioritize, or escalate before disruption becomes failure. The RedBook defines that layer.</p>
+        </div>
+      </section>
+
+      <section className="section off">
+        <div className="container">
+          <SectionHead title="Four chapters the Advisory Circle is validating." />
+          <div className="row-4">
+            {[
+              { t: 'The New Supply Chain Reality', d: 'Geopolitical disruption, tariff shifts, and supplier fragility are no longer edge cases. They are the operating environment.' },
+              { t: 'The Problem With Current Systems', d: 'Dashboards show risk. They do not resolve it. Traditional SCF pays invoices. It does not protect production.' },
+              { t: 'The Required Future State', d: 'A decisioning and liquidity orchestration layer that connects risk signals, operational data, and capital in one place.' },
+              { t: 'The Platform Architecture', d: 'Common core. Industry configuration. Country configuration. Company adoption. User experience. Built to deploy fast.' },
+            ].map((c, i) => (
+              <div key={i} style={{ padding: 36, background: 'var(--white)', borderTop: '2px solid var(--ink)' }}>
+                <h3 className="display-sm" style={{ marginTop: 16 }}>{c.t}</h3>
+                <p className="body body-gray" style={{ marginTop: 12, fontSize: 15 }}>{c.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="section">
+        <div className="container">
+          <div className="row-2" style={{ alignItems: 'start' }}>
+            <div>
+              <div className="mono" style={{ color: 'var(--blue)', marginBottom: 20 }}>STRIKE REDBOOK ADVISORY CIRCLE</div>
+              <h2 className="display-md" style={{ maxWidth: '22ch', marginBottom: 24 }}>
+                You are not being sold software. You are being invited into something strategic.
+              </h2>
+              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 20 }}>
+                Strike is inviting selected companies in logistics, clean tech, critical materials, manufacturing, and supply chain finance to help define the next generation decisioning and liquidity orchestration layer for resilient global supply chains.
+              </p>
+              <p className="body body-gray" style={{ maxWidth: '48ch', marginBottom: 32 }}>
+                Advisory Circle members shape the Strike RedBook, validate platform priorities, and gain early access before general availability. No purchasing obligation. No competitive disclosure. Just a seat at the table where the operating layer for resilient trade is being built.
+              </p>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request an Invitation</a>
+            </div>
+            <div>
+              {[
+                { label: 'ANCHOR BUYERS', value: 'CFOs, treasurers, and supply chain leaders who want to protect continuity and optimize working capital before the next disruption.' },
+                { label: 'STRATEGIC SUPPLIERS', value: 'Finance and operations leaders who want faster access to capital and a stronger position in their buyer relationships.' },
+                { label: 'FUNDERS', value: 'Banks and private credit partners who want a curated, risk-scored pipeline of supply chain finance opportunities.' },
+                { label: 'LOGISTICS PARTNERS', value: 'Freight, customs, and trade compliance firms who want disruption signals connected to financial decisioning.' },
+              ].map((p, i) => (
+                <div key={i} style={{ padding: '20px 0', borderBottom: '1px solid var(--border)' }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gray)', letterSpacing: '0.14em', textTransform: 'uppercase' }}>{p.label}</div>
+                  <div style={{ fontFamily: 'var(--font-body)', fontSize: 15, fontWeight: 300, color: 'var(--ink)', marginTop: 8, lineHeight: 1.6, maxWidth: '42ch' }}>{p.value}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  );
+}
+
+Object.assign(window, { HomePage, SolutionsPage, BanksPage, AnchorsPage, SuppliersPage, PlatformPage, ContactPage, POFinancingPage, InvoiceFactoringPage, ReverseFactoringPage, DynamicDiscountingPage, RedbookPage });

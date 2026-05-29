@@ -19,28 +19,65 @@ function navTo(e, path) {
 
 function Nav({ route }) {
   const [menuOpen, setMenuOpen] = useState(false);
-  const links = [
-    { path: '/solutions', label: 'Solutions' },
-    { path: '/banks', label: 'Banks' },
-    { path: '/anchors', label: 'Anchors' },
-    { path: '/suppliers', label: 'Suppliers' },
-    { path: '/platform', label: 'Platform' },
-    { path: '/contact', label: 'Contact' },
+
+  const programLinks = [
+    { path: '/programs/po-financing',      label: 'PO Financing',          desc: 'Fund suppliers before goods ship' },
+    { path: '/programs/invoice-factoring', label: 'Invoice Factoring',     desc: 'Unlock cash from approved invoices' },
+    { path: '/programs/reverse-factoring', label: 'Reverse Factoring',     desc: 'Buyer-led early payment programs' },
+    { path: '/programs/dynamic-discounting', label: 'Dynamic Discounting', desc: 'Deploy your own cash for yield' },
   ];
+  const audienceLinks = [
+    { path: '/banks',     label: 'Banks',     desc: 'Fund programs at scale' },
+    { path: '/anchors',   label: 'Anchors',   desc: 'Optimise payables and supplier health' },
+    { path: '/suppliers', label: 'Suppliers', desc: 'Access early payment on your terms' },
+  ];
+  const platformLinks = [
+    { path: '/platform', label: 'Architecture',  desc: 'How Strike is built' },
+    { path: '/platform', label: 'Strike AI',     desc: 'Intelligence and risk scoring' },
+    { path: '/platform', label: 'API Reference', desc: 'Integrate with your stack' },
+  ];
+
+  const isProgramsActive = programLinks.some(l => route === l.path);
+  const isAudienceActive = audienceLinks.some(l => route === l.path);
+
   return (
     <React.Fragment>
       <header className="site-header">
         <div className="container nav">
           <Logo />
           <nav className="nav-links">
-            {links.map(l => (
-              <a key={l.path} href={l.path}
-                 className={route === l.path ? 'active' : ''}
-                 onClick={(e) => navTo(e, l.path)}>{l.label}</a>
-            ))}
+            <button
+              type="button"
+              className={`nav-label${isProgramsActive ? ' active' : ''}`}
+              onClick={() => navTo(null, '/solutions')}
+              aria-haspopup="true"
+              tabIndex={0}
+            >Programs</button>
+            <button
+              type="button"
+              className={`nav-label${isAudienceActive ? ' active' : ''}`}
+              onClick={() => navTo(null, '/banks')}
+              aria-haspopup="true"
+              tabIndex={0}
+            >Who It's For</button>
+            <div className={`nav-item${route === '/platform' ? ' active' : ''}`}>
+              <a href="/platform" onClick={(e) => navTo(e, '/platform')}>Platform</a>
+            </div>
+            <div className={`nav-item${route === '/redbook' ? ' active' : ''}`}>
+              <a href="/redbook" onClick={(e) => navTo(e, '/redbook')}>RedBook</a>
+            </div>
+            <div className={`nav-item${route === '/contact' ? ' active' : ''}`}>
+              <a href="/contact" onClick={(e) => navTo(e, '/contact')}>Contact</a>
+            </div>
           </nav>
           <div className="nav-right">
-            <button className="btn btn-ghost btn-sm" style={{ borderColor: 'var(--border-strong)' }}>Log In</button>
+            <a
+              href="https://app.strikescf.com"
+              className="btn btn-ghost btn-sm"
+              style={{ borderColor: 'var(--border-strong)' }}
+              target="_self"
+              rel="noopener noreferrer"
+            >Log In</a>
             <a href="/contact" className="btn btn-sm btn-blue btn-arrow"
                onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
           </div>
@@ -52,16 +89,97 @@ function Nav({ route }) {
             <span className="bar" />
           </button>
         </div>
+
+        {/* Mega panel — CSS-driven, hidden by default, expands on header hover */}
+        <div className="mega-panel">
+          <div className="container">
+            <div className="mega-grid">
+              <div className="mega-col">
+                <div className="mega-col-head">Programs</div>
+                {programLinks.map(l => (
+                  <a key={l.path + l.label} href={l.path}
+                     className={`mega-link${route === l.path ? ' active' : ''}`}
+                     onClick={(e) => navTo(e, l.path)}>
+                    <span className="mega-link-title">{l.label}</span>
+                    <span className="mega-link-desc">{l.desc}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="mega-col">
+                <div className="mega-col-head">Who It's For</div>
+                {audienceLinks.map(l => (
+                  <a key={l.path} href={l.path}
+                     className={`mega-link${route === l.path ? ' active' : ''}`}
+                     onClick={(e) => navTo(e, l.path)}>
+                    <span className="mega-link-title">{l.label}</span>
+                    <span className="mega-link-desc">{l.desc}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="mega-col">
+                <div className="mega-col-head">Platform</div>
+                {platformLinks.map((l, i) => (
+                  <a key={i} href={l.path}
+                     className={`mega-link${route === l.path && i === 0 ? ' active' : ''}`}
+                     onClick={(e) => navTo(e, l.path)}>
+                    <span className="mega-link-title">{l.label}</span>
+                    <span className="mega-link-desc">{l.desc}</span>
+                  </a>
+                ))}
+              </div>
+              <div className="mega-col">
+                <div className="mega-col-head">RedBook</div>
+                <a href="/redbook"
+                   className={`mega-link${route === '/redbook' ? ' active' : ''}`}
+                   onClick={(e) => navTo(e, '/redbook')}>
+                  <span className="mega-link-title">Read the RedBook</span>
+                  <span className="mega-link-desc">The SCF operating standard</span>
+                </a>
+                <a href="/contact"
+                   className="mega-link"
+                   onClick={(e) => navTo(e, '/contact')}>
+                  <span className="mega-link-title">Request Access</span>
+                  <span className="mega-link-desc">Talk to the Strike team</span>
+                </a>
+              </div>
+            </div>
+            <div className="mega-footer">
+              <span className="eyebrow">Strike SCF · Institutional Supply Chain Finance</span>
+              <a href="/contact" className="btn btn-sm btn-blue btn-arrow"
+                 onClick={(e) => navTo(e, '/contact')}>Talk to Sales</a>
+            </div>
+          </div>
+        </div>
       </header>
+
       {menuOpen && (
         <div className="nav-drawer">
-          {links.map(l => (
-            <a key={l.path} href={l.path}
-               className="drawer-link"
+          <div className="drawer-section-header">Programs</div>
+          {programLinks.map(l => (
+            <a key={l.path} href={l.path} className="drawer-link drawer-link-indent"
+               onClick={(e) => { setMenuOpen(false); navTo(e, l.path); }}>{l.label}</a>
+          ))}
+          <div className="drawer-section-header">Who It's For</div>
+          {audienceLinks.map(l => (
+            <a key={l.path} href={l.path} className="drawer-link drawer-link-indent"
+               onClick={(e) => { setMenuOpen(false); navTo(e, l.path); }}>{l.label}</a>
+          ))}
+          {[
+            { path: '/platform', label: 'Platform' },
+            { path: '/redbook',  label: 'RedBook' },
+            { path: '/contact',  label: 'Contact' },
+          ].map(l => (
+            <a key={l.path} href={l.path} className="drawer-link"
                onClick={(e) => { setMenuOpen(false); navTo(e, l.path); }}>{l.label}</a>
           ))}
           <div className="nav-drawer-ctas">
-            <button className="btn btn-ghost" style={{ borderColor: 'var(--border-strong)' }}>Log In</button>
+            <a
+              href="https://app.strikescf.com"
+              className="btn btn-ghost"
+              style={{ borderColor: 'var(--border-strong)' }}
+              target="_self"
+              rel="noopener noreferrer"
+            >Log In</a>
             <a href="/contact" className="btn btn-blue btn-arrow"
                onClick={(e) => { setMenuOpen(false); navTo(e, '/contact'); }}>Talk to Sales</a>
           </div>
@@ -79,7 +197,7 @@ function Footer() {
           <div>
             <Logo />
             <p className="body body-gray" style={{ marginTop: 22, maxWidth: '34ch', fontSize: 14 }}>
-              Institutional supply chain finance infrastructure for banks, anchors and the suppliers they fund.
+              Decisioning and liquidity orchestration for resilient supply chains. Connecting supplier risk, operational signals, and financing options on one intelligent platform.
             </p>
           </div>
           <div>
@@ -104,18 +222,18 @@ function Footer() {
             <h4>Company</h4>
             <ul>
               <li><a href="/" onClick={(e) => navTo(e, '/')}>About</a></li>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Security</a></li>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Press</a></li>
-              <li><a href="/contact" onClick={(e) => navTo(e, '/contact')}>Careers</a></li>
+              <li><a href="/platform#security" onClick={(e) => navTo(e, '/platform')}>Security</a></li>
+              <li><a href="/contact?inquiry=press" onClick={(e) => navTo(e, '/contact')}>Press</a></li>
+              <li><a href="/contact?inquiry=careers" onClick={(e) => navTo(e, '/contact')}>Careers</a></li>
             </ul>
           </div>
           <div>
             <h4>Legal</h4>
             <ul>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Terms</a></li>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Privacy</a></li>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Disclosures</a></li>
-              <li><a href="/" onClick={(e) => navTo(e, '/')}>Data Processing</a></li>
+              <li><a href="mailto:legal@strikescf.com">Terms</a></li>
+              <li><a href="mailto:legal@strikescf.com">Privacy</a></li>
+              <li><a href="mailto:legal@strikescf.com">Disclosures</a></li>
+              <li><a href="mailto:legal@strikescf.com">Data Processing</a></li>
             </ul>
           </div>
         </div>
@@ -128,13 +246,10 @@ function Footer() {
 }
 
 /* ---------- Section head ---------- */
-function SectionHead({ eyebrow, title, kicker }) {
+function SectionHead({ title }) {
   return (
     <div className="section-head">
-      <div className="side">
-        {eyebrow && <span className="eyebrow">{eyebrow}</span>}
-        {kicker && <div className="mono" style={{ marginTop: 14, color: 'var(--gray)' }}>{kicker}</div>}
-      </div>
+      <div className="side"></div>
       <h2 className="display-md">{title}</h2>
     </div>
   );
@@ -147,6 +262,31 @@ function Stat({ value, label, desc, blue, mono }) {
       <div className={'stat-num' + (blue ? ' blue' : '')}>{value}</div>
       <div className="stat-label">{label}</div>
       {desc && <div className="stat-desc">{desc}</div>}
+    </div>
+  );
+}
+
+/* ---------- Scroll fade-in ---------- */
+function FadeIn({ children, delay = 0 }) {
+  const ref = useRef(null);
+  const [visible, setVisible] = useState(false);
+  useEffect(() => {
+    const el = ref.current;
+    if (!el) return;
+    const obs = new IntersectionObserver(
+      ([entry]) => { if (entry.isIntersecting) { setVisible(true); obs.disconnect(); } },
+      { threshold: 0.12 }
+    );
+    obs.observe(el);
+    return () => obs.disconnect();
+  }, []);
+  return (
+    <div ref={ref} style={{
+      opacity: visible ? 1 : 0,
+      transform: visible ? 'none' : 'translateY(22px)',
+      transition: `opacity 0.55s ease ${delay}ms, transform 0.55s ease ${delay}ms`,
+    }}>
+      {children}
     </div>
   );
 }
@@ -252,5 +392,5 @@ function TypewriterHero({ children }) {
 }
 
 Object.assign(window, {
-  Logo, Nav, Footer, SectionHead, Stat, FeatureList, TypewriterHero, navTo
+  Logo, Nav, Footer, SectionHead, Stat, FeatureList, FadeIn, TypewriterHero, navTo
 });

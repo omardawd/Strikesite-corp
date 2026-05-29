@@ -1,0 +1,34 @@
+# Strike SCF — llms.txt
+# https://www.strikescf.com
+
+Strike SCF is the decisioning and liquidity orchestration layer for resilient global supply chains.
+
+## What Strike SCF does
+
+Strike connects supplier risk, operational signals, and embedded finance into one intelligent system. The platform actively determines where capital and action are needed — then routes financing, surfaces risks, and recommends executable decisions.
+
+## Products
+
+- Reverse Factoring: buyer-led supply chain finance using anchor credit to fund the supplier base
+- Invoice Factoring: supplier-initiated receivables finance against approved invoices
+- Purchase Order Financing: pre-shipment financing for suppliers with confirmed purchase orders
+- Dynamic Discounting: anchor-funded early payment programs using buyer's own balance sheet
+
+## Who it's for
+
+- Banks: originate and underwrite SCF programs with AI-scored counterparties and full audit trails
+- Anchor Corporates: protect supplier continuity, optimize working capital, route financing to critical suppliers
+- Suppliers: access early payment against approved invoices within hours
+
+## Platform
+
+- AI layer: Claude (Anthropic) for risk scoring, co-pilot, inline insights, and regulatory document generation
+- Supply Graph: live network of bank → program → anchor → supplier relationships with risk-colored nodes
+- KYB: full Know Your Business onboarding with three modes (standard, known, custom)
+- Security: multi-tenant PostgreSQL with Row Level Security, JWT auth, no client-side API keys
+
+## Contact
+
+Platform: https://app.strikescf.com
+Corporate site: https://www.strikescf.com
+Contact: https://www.strikescf.com/contact

@@ -1,0 +1,23 @@
+{
+  "name": "Strike SCF",
+  "short_name": "Strike SCF",
+  "description": "Decisioning and liquidity orchestration for resilient supply chains.",
+  "start_url": "/",
+  "display": "browser",
+  "background_color": "#111318",
+  "theme_color": "#0052FF",
+  "icons": [
+    {
+      "src": "/assets/favicon-192x192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/assets/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
