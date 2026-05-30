@@ -10,13 +10,14 @@
   <link rel="canonical" href="https://www.strikescf.com/" />
 
   <!-- =====================================================================
-       FAVICON — full chain to override Vercel's default favicon
-       ICO is the primary signal for all browsers. PNG fallbacks for modern
-       browsers, Apple devices, and Android PWA manifest.
+       FAVICON — root path so Safari's implicit /favicon.ico fetch is served
+       directly without hitting the SPA catch-all rewrite. /favicon.ico at
+       root has no-cache headers; /assets/ is immutable CDN-cached and was
+       previously returning stale bad responses in Safari.
        ===================================================================== -->
-  <link rel="icon" href="/assets/favicon.ico" sizes="any" />
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" sizes="any" />
   <link rel="icon" href="/assets/favicon-32x32.png" type="image/png" sizes="32x32" />
-  <link rel="icon" href="/assets/favicon-16x16.png" type="image/png" sizes="16x16" />
   <link rel="apple-touch-icon" sizes="180x180" href="/assets/favicon-180x180.png" />
   <link rel="manifest" href="/manifest.json" />
   <meta name="theme-color" content="#1428CC" />

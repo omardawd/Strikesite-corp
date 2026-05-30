@@ -24,19 +24,23 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 html, body { background: var(--white); color: var(--ink); }
+html { overflow-x: hidden; -webkit-text-size-adjust: 100%; }
 body {
   font-family: var(--font-body);
   font-weight: 300;
   -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
   font-size: 16px;
   line-height: 1.55;
   letter-spacing: 0.005em;
+  overflow-x: hidden;
 }
 
 a { color: inherit; text-decoration: none; }
 button { font: inherit; background: none; border: 0; cursor: pointer; color: inherit; }
-img { max-width: 100%; display: block; }
+img { max-width: 100%; height: auto; display: block; }
+video, svg { max-width: 100%; height: auto; }
 
 /* ---------- Type primitives ---------- */
 .display-xl {
@@ -191,6 +195,7 @@ img { max-width: 100%; display: block; }
   border-bottom: 1px solid transparent;
   transition: color 0.15s ease;
   white-space: nowrap;
+  -webkit-tap-highlight-color: transparent;
 }
 .nav-item:hover { color: var(--blue); }
 .nav-item.active { color: var(--blue); border-bottom-color: var(--blue); }
@@ -387,6 +392,7 @@ img { max-width: 100%; display: block; }
 .btn {
   display: inline-flex; align-items: center; gap: 12px;
   height: 48px;
+  min-height: 48px;
   padding: 0 22px;
   font-family: var(--font-body);
   font-size: 14px;
@@ -397,6 +403,8 @@ img { max-width: 100%; display: block; }
   color: var(--white);
   transition: background .15s ease, color .15s ease, border-color .15s ease,
               box-shadow .2s ease, transform .15s ease;
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;
 }
 .btn:hover { transform: translateY(-1px); }
 .btn-blue {
@@ -510,10 +518,10 @@ img { max-width: 100%; display: block; }
 .tw-right-col {
   position: absolute;
   top: 50%;
-  right: 0;
+  right: -50px;
   transform: translateY(-50%);
   width: 555px;
-  height: 495px;
+  height: 560px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -521,7 +529,8 @@ img { max-width: 100%; display: block; }
 .typewriter-word { color: var(--blue); }
 .tw-word-line {
   display: block;
-  height: 0.94em;
+  width: max-content;
+  height: 1.15em;
   overflow: hidden;
   white-space: nowrap;
 }
@@ -640,7 +649,7 @@ img { max-width: 100%; display: block; }
 }
 @media (max-width: 1280px) {
   .typewriter-hero { padding-right: 460px; }
-  .tw-right-col { width: 440px; height: 420px; }
+  .tw-right-col { width: 440px; height: 560px; }
 }
 
 /* ---------- Section heads ---------- */
@@ -1124,17 +1133,176 @@ img { max-width: 100%; display: block; }
   .form .full { grid-column: span 1; }
 
   .cred-bar-grid { grid-template-columns: repeat(2, 1fr); }
+
+  /* Layout tightening */
+  .section { padding: 52px 0; }
+  .section-tight { padding: 36px 0; }
+  .hero { padding: 48px 0 44px; }
+
+  /* row-4 must go single column on tablet/mobile — 2-col is too tight */
+  .row-4 { grid-template-columns: 1fr; }
+
+  /* Footer: single column on mobile */
+  .foot-grid { grid-template-columns: 1fr; gap: 28px; }
+  .site-footer { padding: 40px 0 20px; }
+
+  /* Feature list rows: hide desc on mobile */
+  .flist .row .desc { display: none; }
+
+  /* CTA strip: more breathing room */
+  .cta-strip { padding: 44px 0; }
+  .cta-strip .row-2 { gap: 40px; }
+
+  /* Stat blocks */
+  .stat { padding: 20px; }
+  .stat-num { font-size: clamp(40px, 10vw, 68px); }
+
+  /* Counterparty cards */
+  .counterparty-card { padding: 24px 20px; }
+
+  /* section-head: tighter */
+  .section-head { padding-bottom: 28px; margin-bottom: 28px; }
+
+  /* Typography scale for tablet */
+  .display-xl { font-size: clamp(36px, 8vw, 64px); }
+  .display-lg { font-size: clamp(28px, 7vw, 48px); }
+  .display-md { font-size: clamp(24px, 6vw, 38px); }
+  .display-sm { font-size: clamp(20px, 5vw, 28px); }
+
+  /* Hero sub text */
+  .hero-sub { font-size: 16px; line-height: 1.55; }
+
+  /* Buttons: full width on mobile in CTA contexts */
+  .cta-strip .btn { width: 100%; justify-content: center; }
+  .hero-cta-row .btn { min-width: 0; flex: 1; }
+
+  /* Nav drawer: update touch targets */
+  .nav-drawer .drawer-link { min-height: 56px; display: flex; align-items: center; padding: 0; border-bottom: 1px solid var(--border); font-size: 20px; }
+  .nav-drawer .drawer-link-indent { padding-left: 20px; font-size: 17px; min-height: 48px; }
+  .nav-drawer-ctas .btn { height: 52px; font-size: 15px; }
+
+  /* About page: row-3 founder cards → single column */
+  .row-3 { grid-template-columns: 1fr; }
+
+  /* Marquee: ensure it doesn't overflow */
+  .marquee-track { white-space: nowrap; }
 }
 
 @media (max-width: 480px) {
-  .display-xl { font-size: clamp(38px, 10vw, 56px); }
-  .display-lg { font-size: clamp(30px, 9vw, 44px); }
-  .hero-sub { font-size: 16px; }
+  /* Root adjustments */
+  :root { --gutter: 16px; }
+  .container { padding: 0 16px; }
+
+  /* Typography */
+  .display-xl { font-size: clamp(32px, 9vw, 48px); }
+  .display-lg { font-size: clamp(26px, 8vw, 36px); }
+  .display-md { font-size: clamp(22px, 6.5vw, 30px); }
+  .display-sm { font-size: clamp(18px, 5vw, 24px); }
+  .hero-sub { font-size: 15px; }
+  .lead { font-size: 15px; }
+
+  /* Section spacing */
+  .section { padding: 44px 0; }
+  .section-tight { padding: 32px 0; }
+  .hero { padding: 40px 0 36px; }
+
+  /* Grids: everything single column */
+  .row-2 { grid-template-columns: 1fr; gap: 24px; }
+  .row-3 { grid-template-columns: 1fr; }
+  .row-4 { grid-template-columns: 1fr; }
+
+  /* Section head: single col, tighter */
+  .section-head { grid-template-columns: 1fr; gap: 14px; padding-bottom: 24px; margin-bottom: 24px; }
+
+  /* Footer */
+  .foot-grid { grid-template-columns: 1fr; gap: 24px; }
+  .site-footer { padding: 36px 0 16px; }
+
+  /* CTA strip */
+  .cta-strip { padding: 36px 0; }
+  .cta-strip .row-2 { gap: 28px; }
+  .cta-strip .btn { width: 100%; justify-content: center; }
+
+  /* Stat blocks: compact */
+  .stat { padding: 18px 16px; }
+  .stat-num { font-size: clamp(36px, 10vw, 56px); }
+
+  /* Hero CTA row: stack buttons */
+  .hero-cta-row { flex-direction: column; gap: 10px; }
+  .hero-cta-row .btn { width: 100%; justify-content: center; }
+
+  /* Feature list: simplified */
+  .flist .row { grid-template-columns: 32px 1fr; gap: 12px; padding: 20px 0; }
+  .flist .row .num { font-size: 10px; padding-top: 2px; }
+  .flist .row .title { font-size: 17px; }
+  .flist .row .desc { display: none; }
+
+  /* Data table: minimal */
+  .dtable .row { grid-template-columns: 1fr 80px; gap: 8px; padding: 14px 16px; }
+  .dtable .id { display: none; }
+  .dtable .col-hide { display: none; }
+
+  /* Nav drawer */
+  .nav-drawer { padding: 24px 16px; }
+  .nav-drawer .drawer-link { font-size: 19px; min-height: 52px; }
+  .nav-drawer-ctas { margin-top: 24px; gap: 12px; }
+  .nav-drawer-ctas .btn { height: 50px; }
+
+  /* Counterparty card */
+  .counterparty-card { padding: 20px 16px; }
+
+  /* Page badge */
+  .page-badge { margin-bottom: 32px; font-size: 9px; padding: 6px 12px; }
+
+  /* AI flag */
+  .ai-flag { grid-template-columns: 1fr; gap: 8px; }
+  .ai-meta { grid-template-columns: 1fr; }
+
+  /* Buttons: ensure minimum tap target */
+  .btn { min-height: 48px; padding: 0 18px; font-size: 13px; }
+  .btn-sm { min-height: 40px; }
+
+  /* Form fields */
+  .form { grid-template-columns: 1fr; gap: 16px; }
+  .form .full { grid-column: span 1; }
+
+  /* Credential bar */
+  .cred-bar-grid { grid-template-columns: 1fr; gap: 12px; }
+
+  /* Arch participants */
+  .arch-participants { grid-template-columns: 1fr; gap: 12px; }
+  .arch { padding: 24px 16px; }
+}
+
+@media (max-width: 390px) {
+  :root { --gutter: 14px; }
+  .container { padding: 0 14px; }
+
+  .display-xl { font-size: clamp(28px, 9.5vw, 40px); }
+  .display-lg { font-size: clamp(24px, 8vw, 32px); }
+  .display-md { font-size: clamp(20px, 6.5vw, 26px); }
+  .display-sm { font-size: clamp(16px, 5vw, 21px); }
+
+  .hero { padding: 36px 0 32px; }
+  .section { padding: 36px 0; }
+  .hero-sub { font-size: 14px; line-height: 1.6; }
+  .lead { font-size: 14px; }
+
+  .nav { height: 60px; }
+  .nav-drawer { top: 60px; padding: 20px 14px; }
+
+  .stat-num { font-size: clamp(32px, 10.5vw, 44px); }
+  .btn { min-height: 46px; font-size: 12.5px; padding: 0 16px; gap: 8px; }
+
+  .section-head { padding-bottom: 20px; margin-bottom: 20px; }
+  .cta-strip { padding: 28px 0; }
+  .foot-grid { gap: 20px; }
+  .site-footer { padding: 28px 0 12px; }
 }
 
 @media (min-width: 981px) and (max-width: 1280px) {
   .typewriter-hero { padding-right: 400px; }
-  .tw-right-col { width: 380px; height: 380px; }
+  .tw-right-col { width: 380px; height: 560px; }
   .row-2 { gap: 48px; }
   .section { padding: 72px 0; }
   .hero { padding: 72px 0 60px; }

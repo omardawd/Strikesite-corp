@@ -303,19 +303,19 @@ function FeatureList({ items }) {
 /* ---------- Typewriter Hero ---------- */
 const TW_WORDS = [
   {
-    word: 'invoice financing',
+    word1: 'invoice', word2: 'financing',
     card: { signal: 'Invoice Approved', supplier: 'Westcoast Fabricators Ltd', detail: '$248,500 · 90% advance rate · 60-day tenor', action: 'DISBURSEMENT INITIATED', confidence: 97 },
   },
   {
-    word: 'supplier risk',
+    word1: 'supplier', word2: 'risk',
     card: { signal: 'Risk Signal Detected', supplier: 'Kestra Industrials Ltd', detail: 'Vietnam sourcing: 31% exposure · Tariff flag', action: 'REVIEW RECOMMENDED', confidence: 89 },
   },
   {
-    word: 'early payment',
+    word1: 'early', word2: 'payment',
     card: { signal: 'Early Payment Requested', supplier: 'Meridian Components SA', detail: '$1.2M eligible · 22 days early · 3.8% APR', action: 'PROGRAM MATCH FOUND', confidence: 94 },
   },
   {
-    word: 'liquidity decisions',
+    word1: 'liquidity', word2: 'decisions',
     card: { signal: 'Liquidity Gap Identified', supplier: 'Apex Supply Group', detail: '$3.4M in eligible invoices pending', action: 'BANK OFFER AVAILABLE', confidence: 91 },
   },
 ];
@@ -365,9 +365,10 @@ function TypewriterHero({ children }) {
     <div className="typewriter-hero">
       <div className="typewriter-left">
         <h1 className="display-xl hero-headline" style={{ maxWidth: '24ch', fontSize: 'clamp(42px, 5.7vw, 86px)' }}>
-          AI that acts when supply chains face
+          AI that acts when supply chains face{' '}
+          <span className="typewriter-word" style={{ display: 'inline-block', ...wordStyle }}>{current.word1}</span>
           <span className="tw-word-line" style={{ overflow: 'hidden' }}>
-            <span className="typewriter-word" style={{ display: 'block', ...wordStyle }}>{current.word}</span>
+            <span className="typewriter-word" style={{ display: 'block', ...wordStyle }}>{current.word2}</span>
           </span>
         </h1>
         {children}
@@ -493,7 +494,7 @@ function HeroUIMockup() {
 
   return (
     <div ref={rootRef} style={{
-      width: 460, height: 408, border: '1px solid var(--border-strong)',
+      width: 460, height: 460, border: '1px solid var(--border-strong)',
       background: '#fff', overflow: 'hidden', position: 'relative',
       boxShadow: '0 8px 48px rgba(0,0,0,0.13), 0 2px 8px rgba(0,0,0,0.07)',
       borderRadius: 10, fontFamily: 'var(--font-body)',
