@@ -1,6 +1,7 @@
 {
   "rewrites": [
     { "source": "/google(.*).html", "destination": "/google$1.html" },
+    { "source": "/favicon.ico", "destination": "/favicon.ico" },
     { "source": "/(.*)", "destination": "/index.html" }
   ],
   "headers": [
