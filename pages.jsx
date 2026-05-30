@@ -846,10 +846,10 @@ function ContactPage() {
       if (res.ok) {
         setSubmitted(true);
       } else {
-        setFormError('Submission failed. Email us directly at hello@strikescf.com');
+        setFormError('Submission failed. Email us directly at support@strikescf.com');
       }
     } catch {
-      setFormError('Network error. Email us directly at hello@strikescf.com');
+      setFormError('Network error. Email us directly at support@strikescf.com');
     } finally {
       setLoading(false);
     }
@@ -879,7 +879,7 @@ function ContactPage() {
                 Three specialised desks. One inbox per region.
               </h2>
               <div className="kv-block" style={{ borderTop: 0, paddingTop: 0 }}>
-                <div><div className="k">GENERAL ENQUIRIES</div><div className="v">hello@strikescf.com</div></div>
+                <div><div className="k">GENERAL ENQUIRIES</div><div className="v">support@strikescf.com</div></div>
                 <div><div className="k">NEW YORK CITY · HQ</div><div className="v">New York, NY</div></div>
               </div>
 
@@ -945,7 +945,7 @@ function ContactPage() {
                     <span className="mono" style={{ color: 'var(--gray)' }}>RESPONSE · 1 BUSINESS DAY</span>
                   </div>
                   <div style={{ marginTop: 24, fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--gray)', letterSpacing: '0.08em' }}>
-                    Or email us directly: <a href="mailto:hello@strikescf.com" style={{ color: 'var(--blue)' }}>hello@strikescf.com</a>
+                    Or email us directly: <a href="mailto:support@strikescf.com" style={{ color: 'var(--blue)' }}>support@strikescf.com</a>
                   </div>
                 </div>
               ) : (
