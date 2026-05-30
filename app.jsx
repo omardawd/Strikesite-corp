@@ -12,32 +12,32 @@ function App() {
 
   useEffect(() => {
     const titles = {
-      '/': 'Strike SCF | Decisioning and Liquidity Orchestration for Resilient Supply Chains',
-      '/solutions': 'Solutions | Strike SCF Supply Chain Finance Platform',
-      '/banks': 'For Banks | Strike SCF Liquidity Orchestration',
-      '/anchors': 'For Anchors | Strike SCF Supply Chain Finance',
-      '/suppliers': 'For Suppliers | Strike SCF Early Payment and Invoice Finance',
-      '/platform': 'Platform Architecture | Strike SCF',
-      '/contact': 'Contact Strike SCF | Request a Pilot or Advisory Circle Invitation',
-      '/programs/po-financing': 'PO Financing | Strike SCF',
-      '/programs/invoice-factoring': 'Invoice Factoring | Strike SCF',
-      '/programs/reverse-factoring': 'Reverse Factoring | Strike SCF',
-      '/programs/dynamic-discounting': 'Dynamic Discounting | Strike SCF',
-      '/redbook': 'The Strike RedBook | Defining the Operating Layer for Resilient Supply Chains',
+      '/': 'Strike SCF | AI-Native Supply Chain Finance Platform',
+      '/solutions': 'Solutions | Strike SCF — SCF Engine + AI Co-Pilot',
+      '/about': 'About Strike SCF | AI-Native Supply Chain Finance Platform',
+      '/banks': 'For Banks | Strike SCF — Originate and Underwrite SCF Programs',
+      '/anchors': 'For Anchor Corporates | Strike SCF — Supply Chain Finance',
+      '/suppliers': 'For Suppliers | Strike SCF — Early Payment and Invoice Finance',
+      '/contact': 'Contact Strike SCF | Request a Pilot',
+      '/programs/po-financing': 'PO Financing | Strike SCF — Finance Purchase Orders Pre-Shipment',
+      '/programs/invoice-factoring': 'Invoice Factoring | Strike SCF — Sell Receivables for Immediate Capital',
+      '/programs/reverse-factoring': 'Reverse Factoring | Strike SCF — Buyer-Led Supplier Finance',
+      '/programs/dynamic-discounting': 'Dynamic Discounting | Strike SCF — Deploy Your Own Cash, Capture the Discount',
+      '/redbook': 'The Strike SCF RedBook | Defining the Future of Supply Chain Finance',
     };
     const descriptions = {
-      '/': 'Strike helps companies identify supplier risk, verify counterparties, and route liquidity to protect supply continuity under disruption.',
-      '/solutions': 'Explore Strike SCF solutions for payables finance, receivables finance, and AI-powered supply chain decisioning.',
-      '/banks': 'Strike gives banks a curated, risk-scored pipeline of supply chain finance opportunities with full audit trails.',
-      '/anchors': 'Strike helps anchor corporates protect supplier continuity, optimize working capital, and route financing to critical suppliers.',
-      '/suppliers': 'Turn verified supplier performance into faster access to capital. Strike connects suppliers to early payment and invoice finance programs.',
-      '/platform': 'Explore the Strike SCF platform architecture. Multi-tenant, API-first, with AI-powered risk scoring and real-time disbursement.',
-      '/contact': 'Talk to the Strike SCF team about your supplier network, your risk exposure, or joining the Strike RedBook Advisory Circle.',
-      '/programs/po-financing': 'Finance supplier purchase orders at the point of commitment with Strike PO Financing.',
-      '/programs/invoice-factoring': 'Turn approved receivables into immediate working capital with Strike Invoice Factoring.',
-      '/programs/reverse-factoring': 'Buyer-led supply chain finance that uses anchor credit to fund your entire supplier base.',
-      '/programs/dynamic-discounting': 'Deploy your own cash to fund suppliers and capture the early payment discount as income.',
-      '/redbook': 'The Strike RedBook defines the decisioning and liquidity orchestration layer for resilient global supply chains.',
+      '/': 'Strike SCF is an AI-native supply chain finance platform. Banks originate programs, anchor corporates extend working capital, and suppliers receive early payment — all on one intelligent platform.',
+      '/solutions': 'Explore Strike SCF solutions: a fully operational multi-portal SCF engine with an AI co-pilot that provides real-time risk scoring, invoice assessment, and decisioning at every step.',
+      '/about': 'Learn about Strike SCF — the AI-native supply chain finance platform built by a team of institutional finance veterans and world-class technologists. The infrastructure layer for global trade.',
+      '/banks': 'Strike SCF gives banks a structured SCF origination platform. Create programs, onboard anchor-supplier networks, manage KYB, approve financing, and monitor portfolio risk in one system.',
+      '/anchors': 'Strike SCF helps anchor corporates extend early payment to their supplier base without balance sheet impact. Approve invoices, manage programs, and protect supply continuity.',
+      '/suppliers': 'Access early payment against approved invoices through your anchor\'s Strike SCF program. No separate credit application. Transparent pricing. Funds within hours of approval.',
+      '/contact': 'Talk to the Strike SCF team. Request a pilot, ask about bank onboarding, or learn how to extend your SCF program to your supplier base.',
+      '/programs/po-financing': 'Finance supplier purchase orders at the point of commitment. Strike SCF PO Financing lets banks fund production before goods are delivered — protecting supplier cash flow at the source.',
+      '/programs/invoice-factoring': 'Suppliers sell approved receivables to the bank directly for immediate working capital. No anchor approval required at submission. Strike SCF Invoice Factoring.',
+      '/programs/reverse-factoring': 'Buyer-led supply chain finance using anchor credit to fund the entire supplier base. Strike SCF Reverse Factoring — the most widely deployed SCF structure globally.',
+      '/programs/dynamic-discounting': 'Anchor corporates deploy their own cash to pay suppliers early and capture the early payment discount as income. Strike SCF Dynamic Discounting — no bank required.',
+      '/redbook': 'The Strike SCF RedBook defines the next generation of supply chain finance and liquidity orchestration. A strategic market intelligence publication for CFOs, treasurers, and heads of trade finance.',
     };
     document.title = titles[route] || titles['/'];
     const metaDesc = document.querySelector('meta[name="description"]');
@@ -45,11 +45,12 @@ function App() {
   }, [route]);
 
   let Page = HomePage;
-  if (route === '/solutions') Page = SolutionsPage;
+  // else if (route === '/solutions') Page = SolutionsPage;
+  if (route === '/about') Page = AboutPage;
   else if (route === '/banks') Page = BanksPage;
   else if (route === '/anchors') Page = AnchorsPage;
   else if (route === '/suppliers') Page = SuppliersPage;
-  else if (route === '/platform') Page = PlatformPage;
+  // else if (route === '/platform') Page = PlatformPage;
   else if (route === '/contact') Page = ContactPage;
   else if (route === '/programs/po-financing') Page = POFinancingPage;
   else if (route === '/programs/invoice-factoring') Page = InvoiceFactoringPage;

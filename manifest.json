@@ -1,11 +1,11 @@
 {
   "name": "Strike SCF",
   "short_name": "Strike SCF",
-  "description": "Decisioning and liquidity orchestration for resilient supply chains.",
+  "description": "AI-native supply chain finance platform. Bank, Anchor, and Supplier portals.",
   "start_url": "/",
   "display": "browser",
-  "background_color": "#111318",
-  "theme_color": "#0052FF",
+  "background_color": "#0D1B3E",
+  "theme_color": "#1428CC",
   "icons": [
     {
       "src": "/assets/favicon-192x192.png",
