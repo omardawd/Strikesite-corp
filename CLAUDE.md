@@ -29,8 +29,8 @@ The platform app is a fully separate Vercel project and Next.js codebase. The co
 ```
 /
 ├── index.html          # Entry point — all <script> tags loaded here
-├── app.jsx             # Router shell, page title/description updates
-├── components.jsx      # Shared: Nav, Footer, Logo, FadeIn, Stat, TypewriterHero, navTo
+├── app.jsx             # Router shell, page title/description/canonical updates
+├── components.jsx      # Shared: Nav, Footer, Logo, FadeIn, Stat, ProductFrame, navTo
 ├── pages.jsx           # All page components: HomePage, SolutionsPage, BanksPage, etc.
 ├── diagrams.jsx        # SVG diagram components: TransactionFlow, StrikeAITerminal, etc.
 ├── styles.css          # All CSS — single file, CSS custom properties for tokens
@@ -63,9 +63,11 @@ The platform app is a fully separate Vercel project and Next.js codebase. The co
   --gray-soft:     #9AA0AB;
   --border:        #E5E7EB;
   --border-strong: #D1D5DB;
-  --blue:          #0052FF;
-  --blue-hover:    #0040C8;
-  --blue-dim:      #1A3FA3;
+  --blue:          #1428CC;
+  --blue-hover:    #1020AA;
+  --blue-dim:      #0E1E7A;
+  --blue-light:    #EEF0FF;
+  --gold:          #C9A84C;
 
   --font-display: "Space Grotesk", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-body:    "DM Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;

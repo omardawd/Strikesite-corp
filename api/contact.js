@@ -3,10 +3,13 @@ export default async function handler(req, res) {
     return res.status(405).json({ error: 'Method not allowed' });
   }
 
-  const { name, company, role, type, message } = req.body || {};
+  const { name, company, email, role, type, message } = req.body || {};
 
-  if (!name || !company || !message) {
-    return res.status(400).json({ error: 'Missing required fields: name, company, message' });
+  if (!name || !company || !email || !message) {
+    return res.status(400).json({ error: 'Missing required fields: name, company, email, message' });
+  }
+  if (!/^\S+@\S+\.\S+$/.test(email)) {
+    return res.status(400).json({ error: 'Invalid email address' });
   }
 
   const apiKey = process.env.RESEND_API_KEY;
@@ -23,6 +26,7 @@ export default async function handler(req, res) {
       <table style="width: 100%; border-collapse: collapse;">
         <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; width: 140px;">NAME</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">${name}</td></tr>
         <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">COMPANY</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">${company}</td></tr>
+        <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">EMAIL</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;"><a href="mailto:${email}" style="color: #1428CC;">${email}</a></td></tr>
         <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">ROLE</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">${role || '—'}</td></tr>
         <tr><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase;">TYPE</td><td style="padding: 10px 0; border-bottom: 1px solid #E5E7EB;">${type || '—'}</td></tr>
         <tr><td style="padding: 10px 0; color: #6B7280; font-size: 10px; letter-spacing: 0.12em; text-transform: uppercase; vertical-align: top;">MESSAGE</td><td style="padding: 10px 0; line-height: 1.6;">${message.replace(/\n/g, '<br>')}</td></tr>
@@ -40,6 +44,7 @@ export default async function handler(req, res) {
       body: JSON.stringify({
         from: 'Strike SCF <noreply@strikescf.com>',
         to: [toEmail],
+        reply_to: email,
         subject: `New contact: ${name} · ${company}`,
         html,
       }),

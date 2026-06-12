@@ -1,20 +1,81 @@
 /* Pages: Home, Solutions, Banks, Anchors, Platform, Contact */
 
+/* ---------- Animated hero headline ----------
+   The deal pipeline assembles itself: each stage lands in sequence (the
+   newest carries the blue highlight), the sub-line follows, the whole
+   line dwells, clears, and loops. */
+const HERO_STAGES = ['Source', 'Vet', 'Negotiate', 'Close', 'Finance'];
+
+function HeroFlowHeadline() {
+  // step = how many stages have landed (1–5); 6 = sub-line revealed
+  const [step, setStep] = useState(0);
+  const [leaving, setLeaving] = useState(false);
+
+  useEffect(() => {
+    const reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) { setStep(6); return; }
+    let alive = true;
+    const timers = [];
+    const wait = (ms) => new Promise(r => timers.push(setTimeout(r, ms)));
+    (async () => {
+      while (alive) {
+        setLeaving(false);
+        setStep(0);
+        await wait(420);
+        for (let i = 1; i <= HERO_STAGES.length && alive; i++) {
+          setStep(i);
+          await wait(i === HERO_STAGES.length ? 720 : 540);
+        }
+        if (!alive) return;
+        setStep(6);
+        await wait(3400);
+        if (!alive) return;
+        setLeaving(true);
+        await wait(720);
+      }
+    })();
+    return () => { alive = false; timers.forEach(clearTimeout); };
+  }, []);
+
+  return (
+    <h1 className={'hero-seq-block' + (leaving ? ' leaving' : '')}
+        aria-label="Source, vet, negotiate, close, finance — with Strike SCF AI">
+      <span className="hero-seq" aria-hidden="true">
+        {HERO_STAGES.map((w, i) => {
+          const last = i === HERO_STAGES.length - 1;
+          const hot = step === i + 1 || (last && step >= HERO_STAGES.length);
+          return (
+            <span key={w} className="hero-seq-item">
+              <span className={'hero-seq-word' + (step > i ? ' in' : '') + (hot ? ' hot' : '')}>{w}</span>
+              {!last && <span className={'hero-seq-arrow' + (step > i + 1 ? ' in' : '')}>→</span>}
+            </span>
+          );
+        })}
+      </span>
+      <span className={'hero-seq-sub' + (step > 5 ? ' in' : '')} aria-hidden="true">With Strike SCF AI</span>
+    </h1>
+  );
+}
+
 function HomePage() {
   return (
     <div className="page" data-screen-label="Home">
-      {/* HERO */}
-      <section className="hero" style={{ minHeight: 'calc(100vh - 72px)', display: 'flex', alignItems: 'center' }}>
-        <div className="container" style={{ width: '100%' }}>
-          <TypewriterHero>
+      {/* HERO — statement, then the product itself */}
+      <section className="hero" style={{ paddingBottom: 'clamp(56px, 8vw, 112px)' }}>
+        <div className="container">
+          <div className="hero-center">
+            <HeroFlowHeadline />
             <p className="hero-sub">
               Strike connects supplier risk, operational signals, and financing options so companies protect margin, continuity, and growth before disruption becomes failure. Built for CFOs, supply chain leaders, procurement teams, and the funders who support them.
             </p>
             <div className="hero-cta-row">
-              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Contact Sales</a>
-              <a href="/solutions" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/solutions')}>See the Platform</a>
+              <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Contact sales</a>
+              <a href="/redbook" className="btn btn-ghost" onClick={(e) => navTo(e, '/redbook')}>Read the RedBook</a>
             </div>
-          </TypewriterHero>
+          </div>
+          <FadeIn delay={140}>
+            <ProductFrame />
+          </FadeIn>
         </div>
       </section>
 
@@ -48,56 +109,171 @@ function HomePage() {
         })()}
       </section>
 
-      {/* GAP + MAP DECIDE FUND — COMBINED */}
-      <section className="section">
+      {/* THE PROBLEM */}
+      <section className="section-xl" style={{ borderTop: 0 }}>
         <div className="container">
           <div className="row-2" style={{ alignItems: 'start', gap: 80 }}>
-
-            {/* LEFT — narrative + horizontal stats */}
-            <div>
+            <FadeIn>
               <h2 className="display-lg" style={{ maxWidth: '16ch' }}>The $2.5 trillion gap that traditional finance cannot close.</h2>
-              <p style={{ marginTop: 24, maxWidth: '52ch', fontSize: 16, lineHeight: 1.7, color: 'var(--gray)', fontWeight: 300 }}>Every year, $2.5 trillion in trade finance goes unfunded. Suppliers wait months to be paid. Buyers lose good suppliers. Banks see the demand but cannot act fast enough. Strike SCF is the layer that connects all three.</p>
-              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', marginTop: 44 }}>
-                {[
-                  { v: '$2.5T', c: 'var(--ink)', sub: 'Annual trade finance gap per IFC and ICC.' },
-                  { v: '90 Days', c: 'var(--blue)', sub: 'Structured pilot from onboarding to first disbursement.' },
-                  { v: '72 Hours', c: 'var(--ink)', sub: 'Median time from invoice to supplier payment credited.' },
-                ].map((s, i) => (
-                  <div key={i} style={{ background: 'var(--white)', padding: '28px 20px' }}>
-                    <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 34, letterSpacing: '-0.03em', color: s.c, lineHeight: 1.05 }}>{s.v}</div>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 10, lineHeight: 1.6 }}>{s.sub}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            {/* RIGHT — Map / Decide / Fund with scroll-in + arrow connectors */}
-            <div>
-              {[
-                { n: '01', t: 'Map', d: 'Build a live graph of your supplier network including risk exposure, financing eligibility, country concentration, and performance history.' },
-                { n: '02', t: 'Decide', d: 'Surface which suppliers are fragile, which invoices need early payment, and which financing route protects your margin and continuity.' },
-                { n: '03', t: 'Fund', d: 'Route the right invoice or purchase order to the right capital source. Bank credit, private credit, buyer cash, or development finance.' },
-              ].map((c, i) => (
-                <React.Fragment key={i}>
-                  <FadeIn delay={i * 130}>
-                    <div style={{ paddingTop: 28, paddingBottom: 28, borderTop: '1px solid var(--border)', display: 'flex', gap: 24, alignItems: 'start' }}>
-                      <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 64, color: 'rgba(0,0,0,0.06)', lineHeight: 1, minWidth: 60, flexShrink: 0 }}>{c.n}</div>
-                      <div>
-                        <h3 className="display-sm">{c.t}</h3>
-                        <p className="body body-gray" style={{ marginTop: 8, maxWidth: '38ch' }}>{c.d}</p>
-                      </div>
-                    </div>
-                  </FadeIn>
-                </React.Fragment>
-              ))}
-            </div>
-
+            </FadeIn>
+            <FadeIn delay={120}>
+              <p style={{ marginTop: 8, maxWidth: '50ch', fontSize: 18, lineHeight: 1.7, color: 'var(--gray)', fontWeight: 300 }}>
+                Every year, $2.5 trillion in trade finance goes unfunded. Suppliers wait months to be paid. Buyers lose good suppliers. Banks see the demand but cannot act fast enough. Strike SCF is the layer that connects all three.
+              </p>
+            </FadeIn>
+          </div>
+          <div className="home-stats">
+            {[
+              { v: '$2.5T', c: 'var(--ink)', sub: 'Annual trade finance gap per IFC and ICC.' },
+              { v: '90 days', c: 'var(--blue)', sub: 'Structured pilot from onboarding to first disbursement.' },
+              { v: '72 hours', c: 'var(--ink)', sub: 'Median time from invoice to supplier payment credited.' },
+            ].map((s, i) => (
+              <FadeIn key={i} delay={i * 110}>
+                <div style={{ borderTop: '1px solid var(--border-strong)', paddingTop: 24 }}>
+                  <div style={{ fontFamily: 'var(--font-display)', fontWeight: 700, fontSize: 'clamp(40px, 4vw, 60px)', letterSpacing: '-0.03em', color: s.c, lineHeight: 1 }}>{s.v}</div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--gray)', letterSpacing: '0.1em', textTransform: 'uppercase', marginTop: 14, lineHeight: 1.7, maxWidth: '30ch' }}>{s.sub}</div>
+                </div>
+              </FadeIn>
+            ))}
           </div>
         </div>
       </section>
 
+      {/* THE OPERATING LOOP */}
+      <section className="section-xl off">
+        <div className="container">
+          <div className="loop-head">
+            <FadeIn>
+              <div className="section-label">The operating loop</div>
+              <h2 className="display-md" style={{ maxWidth: '20ch' }}>Map the network. Decide with AI. Fund through the right channel.</h2>
+            </FadeIn>
+            <FadeIn delay={160}>
+              <div className="loop-mocks" aria-hidden="true">
+                {/* Strike Place listing */}
+                <div className="mock-card mock-listing">
+                  <div className="mock-card-head">
+                    <span className="mock-label">Strike Place · Listing</span>
+                    <span className="mock-pill">Open</span>
+                  </div>
+                  <div className="mock-title">Reverse factoring · USD payables</div>
+                  <div className="mock-rows">
+                    <div><span>Available</span><strong>$2.4M</strong></div>
+                    <div><span>Rate</span><strong>4.8% APR</strong></div>
+                    <div><span>Tenor</span><strong>Net 90</strong></div>
+                  </div>
+                  <div className="mock-foot">3 funder offers · AI-matched</div>
+                </div>
+                {/* Strike Passport */}
+                <div className="mock-card mock-passport">
+                  <div className="mock-card-head">
+                    <span className="mock-label">Strike Passport</span>
+                    <span className="mock-live"><span className="dot" />Live</span>
+                  </div>
+                  <div className="mock-passport-body">
+                    <div className="mock-score">
+                      <svg viewBox="0 0 56 56" width="56" height="56">
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--border)" strokeWidth="4" />
+                        <circle cx="28" cy="28" r="24" fill="none" stroke="var(--blue)" strokeWidth="4"
+                                strokeDasharray="123.7 150.8" strokeLinecap="round"
+                                transform="rotate(-90 28 28)" />
+                        <text x="28" y="33" textAnchor="middle"
+                              fontFamily="Space Grotesk, sans-serif" fontSize="17" fontWeight="700"
+                              fill="var(--ink)">82</text>
+                      </svg>
+                    </div>
+                    <div>
+                      <div className="mock-title">Westcoast Fabricators</div>
+                      <div className="mock-sub">PassportScore™ · updated 2h ago</div>
+                    </div>
+                  </div>
+                  <div className="mock-rows">
+                    <div><span>On-time</span><strong className="g">94%</strong></div>
+                    <div><span>Disputes</span><strong className="g">0</strong></div>
+                    <div><span>KYB</span><strong>Verified</strong></div>
+                  </div>
+                </div>
+              </div>
+            </FadeIn>
+          </div>
+          <div className="home-loop">
+            {[
+              { n: '01', t: 'Map', d: 'Build a live graph of your supplier network including risk exposure, financing eligibility, country concentration, and performance history.' },
+              { n: '02', t: 'Decide', d: 'Surface which suppliers are fragile, which invoices need early payment, and which financing route protects your margin and continuity.' },
+              { n: '03', t: 'Fund', d: 'Route the right invoice or purchase order to the right capital source. Bank credit, private credit, buyer cash, or development finance.' },
+            ].map((c, i) => (
+              <FadeIn key={i} delay={i * 130}>
+                <div style={{ borderTop: '1px solid var(--border-strong)', paddingTop: 28 }}>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--blue)', letterSpacing: '0.14em' }}>{c.n}</div>
+                  <h3 className="display-sm" style={{ marginTop: 16 }}>{c.t}</h3>
+                  <p className="body body-gray" style={{ marginTop: 12, maxWidth: '36ch', fontSize: 15 }}>{c.d}</p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* STRIKE AI — DARK */}
+      <section className="section-xl dark">
+        <div className="container">
+          <FadeIn>
+            <div className="section-label" style={{ color: 'var(--gray-soft)' }}>Strike AI</div>
+            <h2 className="display-md" style={{ color: 'var(--white)', maxWidth: '22ch' }}>
+              A co-pilot for the trade finance desk. Not a chatbot.
+            </h2>
+          </FadeIn>
+          <div className="row-2" style={{ alignItems: 'start', marginTop: 64 }}>
+            <div>
+              <p className="lead" style={{ color: '#C8CDD6', maxWidth: '46ch' }}>
+                Strike AI sits between origination and approval. It scores risk on every incoming financing request, surfaces anomalies against historical patterns, and recommends pricing — leaving the decision with your credit officers.
+              </p>
+              <div className="ai-tiles" style={{ marginTop: 44 }}>
+                {[
+                  { k: 'RISK SCORING', v: 'Per invoice and counterparty — returned in under one second.' },
+                  { k: 'CONCENTRATION', v: 'Live heat-map by anchor, supplier, geography, and sector.' },
+                  { k: 'ANOMALY DETECTION', v: 'Duplicate invoice, round-tripping, and shell-supplier patterns.' },
+                  { k: 'MODEL GOVERNANCE', v: 'SR 11-7 compliant documentation and drift monitoring.' },
+                ].map((item, i) => (
+                  <div key={i} style={{ background: 'var(--ink-soft)', padding: '20px 20px' }}>
+                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray-soft)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>{item.k}</div>
+                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: '#C8CDD6', fontWeight: 300, lineHeight: 1.5 }}>{item.v}</div>
+                  </div>
+                ))}
+              </div>
+              <div style={{ marginTop: 36 }}>
+                <a href="/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to the team</a>
+              </div>
+            </div>
+            <div style={{ position: 'relative' }}>
+              <div style={{
+                position: 'absolute',
+                inset: '-50px',
+                background: 'radial-gradient(circle at 60% 40%, rgba(20,40,204,0.16) 0%, transparent 65%)',
+                pointerEvents: 'none',
+                zIndex: 0,
+              }} />
+              <FadeIn delay={150}>
+                <div style={{ position: 'relative', zIndex: 1 }}>
+                  <StrikeAITerminal />
+                </div>
+              </FadeIn>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* TRANSACTION FLOW */}
+      <section className="section-xl">
+        <div className="container">
+          <SectionHead title="AI that moves every invoice from approval to disbursement." />
+          <FadeIn>
+            <TransactionFlow />
+          </FadeIn>
+        </div>
+      </section>
+
       {/* FINANCING PROGRAMS */}
-      <section className="section off">
+      <section className="section-xl off">
         <div className="container">
           <SectionHead title="Four financing structures. One intelligent platform." />
           <div className="row-4" style={{ background: 'var(--border)' }}>
@@ -212,16 +388,8 @@ function HomePage() {
         </div>
       </section>
 
-      {/* TRANSACTION FLOW */}
-      <section className="section off">
-        <div className="container">
-          <SectionHead title="AI that moves every invoice from approval to disbursement." />
-          <TransactionFlow />
-        </div>
-      </section>
-
       {/* WHO IT SERVES */}
-      <section className="section off">
+      <section className="section-xl">
         <div className="container">
           <SectionHead title="Built for the three counterparties of every trade finance transaction." />
           <div className="row-3" style={{ background: 'var(--border)' }}>
@@ -258,71 +426,23 @@ function HomePage() {
         </div>
       </section>
 
-      {/* STRIKE AI — DARK */}
-      {/* <section className="section dark">
+      {/* CLOSING CTA */}
+      <section className="cta-strip cta-xl">
         <div className="container">
-          <div className="section-head" style={{ borderColor: '#222730' }}>
-            <div className="side"></div>
-            <h2 className="display-md" style={{ color: 'var(--white)', maxWidth: '22ch' }}>
-              A co-pilot for the trade finance desk. Not a chatbot.
-            </h2>
-          </div>
-
-          <div className="row-2" style={{ alignItems: 'start' }}>
-            <div>
-              <p className="lead" style={{ color: '#C8CDD6', maxWidth: '46ch' }}>
-                Strike AI sits between origination and approval. It scores risk on every incoming financing request, surfaces anomalies against historical patterns, and recommends pricing — leaving the decision with your credit officers.
-              </p>
-              <div style={{ marginTop: 40, display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '1px', background: '#222730' }}>
-                {[
-                  { k: 'RISK SCORING', v: 'Per invoice and counterparty — returned in under one second.' },
-                  { k: 'CONCENTRATION', v: 'Live heat-map by anchor, supplier, geography, and sector.' },
-                  { k: 'ANOMALY DETECTION', v: 'Duplicate invoice, round-tripping, and shell-supplier patterns.' },
-                  { k: 'MODEL GOVERNANCE', v: 'SR 11-7 compliant documentation and drift monitoring.' },
-                ].map((item, i) => (
-                  <div key={i} style={{ background: 'var(--ink-soft)', padding: '20px 20px' }}>
-                    <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--gray-soft)', letterSpacing: '0.14em', textTransform: 'uppercase', marginBottom: 8 }}>{item.k}</div>
-                    <div style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: '#C8CDD6', fontWeight: 300, lineHeight: 1.5 }}>{item.v}</div>
-                  </div>
-                ))}
-              </div>
-              <div style={{ marginTop: 32 }}>
-                <a href="/solutions" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/solutions')}>See Strike AI</a>
-              </div>
-            </div>
-            <div style={{ position: 'relative' }}>
-              <div style={{
-                position: 'absolute',
-                inset: '-50px',
-                background: 'radial-gradient(circle at 60% 40%, rgba(0,82,255,0.13) 0%, transparent 65%)',
-                pointerEvents: 'none',
-                zIndex: 0,
-              }} />
-              <div style={{ position: 'relative', zIndex: 1 }}>
-                <StrikeAITerminal />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section> */}
-
-      {/* CTA STRIP */}
-      <section className="cta-strip">
-        <div className="container">
-          <div className="row-2" style={{ alignItems: 'end', gap: 80 }}>
-            <h2 className="display-lg" style={{ color: 'var(--white)', maxWidth: '14ch' }}>
-              Run a 90-day pilot on your live supplier network.
-            </h2>
-            <div>
-              <p className="lead" style={{ color: '#C8CDD6', maxWidth: '46ch' }}>
+          <FadeIn>
+            <div className="cta-center">
+              <h2 className="display-lg" style={{ color: 'var(--white)' }}>
+                Run a 90-day pilot on your live supplier network.
+              </h2>
+              <p className="lead" style={{ color: '#C8CDD6' }}>
                 We deploy alongside your existing core banking and ERP stack. No data migration, no re-platforming. First disbursement within the first 30 days of your 90-day pilot.
               </p>
-              <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
-                <a href="/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Contact Sales</a>
-                <a href="/solutions" className="btn btn-ghost btn-arrow" style={{ borderColor: '#3A3F49', color: 'var(--white)' }} onClick={(e) => navTo(e, '/solutions')}>See the Platform</a>
+              <div className="cta-actions">
+                <a href="/contact" className="btn btn-light btn-arrow" onClick={(e) => navTo(e, '/contact')}>Contact sales</a>
               </div>
+              <div className="cta-note">Response · 1 business day</div>
             </div>
-          </div>
+          </FadeIn>
         </div>
       </section>
     </div>
@@ -451,7 +571,7 @@ function BanksPage() {
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Request Briefing</a>
-                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>Technical Spec</a>
+                <a href="/programs/reverse-factoring" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/programs/reverse-factoring')}>See program structures</a>
               </div>
             </div>
 
@@ -492,7 +612,7 @@ function BanksPage() {
                     {(() => {
                       const pts = [82, 74, 76, 70, 64, 58, 60, 52, 50, 46, 48, 42, 38, 40, 36, 34, 32, 36, 30, 28, 32, 26, 24, 26, 22, 20, 22, 18, 16, 14];
                       const d = pts.map((p, i) => `${i === 0 ? 'M' : 'L'} ${(i / (pts.length - 1)) * 600} ${p}`).join(' ');
-                      return <path d={d} fill="none" stroke="#0052FF" strokeWidth="1.5" />;
+                      return <path d={d} fill="none" stroke="#1428CC" strokeWidth="1.5" />;
                     })()}
                   </svg>
                 </div>
@@ -582,7 +702,7 @@ function AnchorsPage() {
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
-                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+                <a href="/programs/reverse-factoring" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/programs/reverse-factoring')}>How it works</a>
               </div>
             </div>
 
@@ -661,7 +781,7 @@ function AnchorsPage() {
               <p className="body body-gray">Strike SCF deploys alongside your existing ERP and banking relationships. Your treasury team retains full control. First supplier disbursement within the first 30 days of your pilot.</p>
               <div style={{ marginTop: 32, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Schedule Treasury Brief</a>
-                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+                <a href="/programs/reverse-factoring" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/programs/reverse-factoring')}>How it works</a>
               </div>
             </div>
           </div>
@@ -826,13 +946,17 @@ function ContactPage() {
   const [loading, setLoading] = useState(false);
   const [formError, setFormError] = useState('');
   const [form, setForm] = useState({
-    name: '', company: '', role: 'CFO', type: 'Anchor Buyer', message: ''
+    name: '', company: '', email: '', role: 'CFO', type: 'Anchor Buyer', message: ''
   });
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
 
   const submit = async () => {
-    if (!form.name || !form.company || !form.message) {
-      setFormError('Please fill in your name, company, and message.');
+    if (!form.name || !form.company || !form.email || !form.message) {
+      setFormError('Please fill in your name, company, email, and message.');
+      return;
+    }
+    if (!/^\S+@\S+\.\S+$/.test(form.email)) {
+      setFormError('Please enter a valid email address.');
       return;
     }
     setLoading(true);
@@ -876,7 +1000,7 @@ function ContactPage() {
           <div className="row-2" style={{ alignItems: 'start' }}>
             <div>
               <h2 className="display-md" style={{ marginBottom: 28, maxWidth: '18ch' }}>
-                Three specialised desks. One inbox per region.
+                Want to be part of the movement?
               </h2>
               <div className="kv-block" style={{ borderTop: 0, paddingTop: 0 }}>
                 <div><div className="k">GENERAL ENQUIRIES</div><div className="v">support@strikescf.com</div></div>
@@ -905,6 +1029,10 @@ function ContactPage() {
                     <div className="field">
                       <label>Company</label>
                       <input value={form.company} onChange={e => set('company', e.target.value)} placeholder="Institution name" />
+                    </div>
+                    <div className="field full">
+                      <label>Work email</label>
+                      <input type="email" value={form.email} onChange={e => set('email', e.target.value)} placeholder="jane@company.com" autoComplete="email" />
                     </div>
                     <div className="field">
                       <label>Role</label>
@@ -997,7 +1125,7 @@ function SuppliersPage() {
               ]} />
               <div style={{ marginTop: 40, display: 'flex', gap: 16 }}>
                 <a href="/contact" className="btn btn-blue btn-arrow" onClick={(e) => navTo(e, '/contact')}>Talk to Your Anchor</a>
-                <a href="/platform" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/platform')}>How It Works</a>
+                <a href="/programs/invoice-factoring" className="btn btn-ghost btn-arrow" onClick={(e) => navTo(e, '/programs/invoice-factoring')}>How it works</a>
               </div>
             </div>
 

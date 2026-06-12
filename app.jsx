@@ -13,7 +13,6 @@ function App() {
   useEffect(() => {
     const titles = {
       '/': 'Strike SCF | AI-Native Supply Chain Finance Platform',
-      '/solutions': 'Solutions | Strike SCF — SCF Engine + AI Co-Pilot',
       '/about': 'About Strike SCF | AI-Native Supply Chain Finance Platform',
       '/banks': 'For Banks | Strike SCF — Originate and Underwrite SCF Programs',
       '/anchors': 'For Anchor Corporates | Strike SCF — Supply Chain Finance',
@@ -27,7 +26,6 @@ function App() {
     };
     const descriptions = {
       '/': 'Strike SCF is an AI-native supply chain finance platform. Banks originate programs, anchor corporates extend working capital, and suppliers receive early payment — all on one intelligent platform.',
-      '/solutions': 'Explore Strike SCF solutions: a fully operational multi-portal SCF engine with an AI co-pilot that provides real-time risk scoring, invoice assessment, and decisioning at every step.',
       '/about': 'Learn about Strike SCF — the AI-native supply chain finance platform built by a team of institutional finance veterans and world-class technologists. The infrastructure layer for global trade.',
       '/banks': 'Strike SCF gives banks a structured SCF origination platform. Create programs, onboard anchor-supplier networks, manage KYB, approve financing, and monitor portfolio risk in one system.',
       '/anchors': 'Strike SCF helps anchor corporates extend early payment to their supplier base without balance sheet impact. Approve invoices, manage programs, and protect supply continuity.',
@@ -42,6 +40,11 @@ function App() {
     document.title = titles[route] || titles['/'];
     const metaDesc = document.querySelector('meta[name="description"]');
     if (metaDesc) metaDesc.setAttribute('content', descriptions[route] || descriptions['/']);
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) {
+      const path = titles[route] ? route : '/';
+      canonical.setAttribute('href', 'https://www.strikescf.com' + (path === '/' ? '/' : path));
+    }
   }, [route]);
 
   let Page = HomePage;

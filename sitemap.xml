@@ -7,25 +7,25 @@
   <!-- Core pages -->
   <url>
     <loc>https://www.strikescf.com/</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/about</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/redbook</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/contact</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -33,19 +33,19 @@
   <!-- Audience pages -->
   <url>
     <loc>https://www.strikescf.com/banks</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/anchors</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/suppliers</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -53,25 +53,25 @@
   <!-- Program pages -->
   <url>
     <loc>https://www.strikescf.com/programs/reverse-factoring</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/programs/invoice-factoring</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/programs/po-financing</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://www.strikescf.com/programs/dynamic-discounting</loc>
-    <lastmod>2026-05-29</lastmod>
+    <lastmod>2026-06-10</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
