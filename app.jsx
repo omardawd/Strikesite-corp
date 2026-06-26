@@ -23,6 +23,7 @@ function App() {
       '/programs/reverse-factoring': 'Reverse Factoring | Strike SCF — Buyer-Led Supplier Finance',
       '/programs/dynamic-discounting': 'Dynamic Discounting | Strike SCF — Deploy Your Own Cash, Capture the Discount',
       '/redbook': 'The Strike SCF RedBook | Defining the Future of Supply Chain Finance',
+      '/redbook/co-pilot-to-counterparty': 'From Co-Pilot to Counterparty | Strike SCF Red Paper No. 1',
     };
     const descriptions = {
       '/': 'Strike SCF is an AI-native supply chain finance platform. Banks originate programs, anchor corporates extend working capital, and suppliers receive early payment — all on one intelligent platform.',
@@ -36,14 +37,63 @@ function App() {
       '/programs/reverse-factoring': 'Buyer-led supply chain finance using anchor credit to fund the entire supplier base. Strike SCF Reverse Factoring — the most widely deployed SCF structure globally.',
       '/programs/dynamic-discounting': 'Anchor corporates deploy their own cash to pay suppliers early and capture the early payment discount as income. Strike SCF Dynamic Discounting — no bank required.',
       '/redbook': 'The Strike SCF RedBook defines the next generation of supply chain finance and liquidity orchestration. A strategic market intelligence publication for CFOs, treasurers, and heads of trade finance.',
+      '/redbook/co-pilot-to-counterparty': 'How autonomous AI agents are closing the $2.5 trillion trade finance gap — and why open networks are the prerequisite. Strike SCF Red Paper No. 1 on agentic AI in supply chain finance.',
     };
-    document.title = titles[route] || titles['/'];
-    const metaDesc = document.querySelector('meta[name="description"]');
-    if (metaDesc) metaDesc.setAttribute('content', descriptions[route] || descriptions['/']);
-    const canonical = document.querySelector('link[rel="canonical"]');
-    if (canonical) {
-      const path = titles[route] ? route : '/';
-      canonical.setAttribute('href', 'https://www.strikescf.com' + (path === '/' ? '/' : path));
+
+    const canonicalPath = titles[route] ? route : '/';
+    const canonicalUrl = 'https://www.strikescf.com' + (canonicalPath === '/' ? '/' : canonicalPath);
+    const title = titles[route] || titles['/'];
+    const desc = descriptions[route] || descriptions['/'];
+
+    document.title = title;
+
+    const set = (sel, attr, val) => { const el = document.querySelector(sel); if (el) el.setAttribute(attr, val); };
+    set('meta[name="description"]', 'content', desc);
+    set('link[rel="canonical"]', 'href', canonicalUrl);
+    set('meta[property="og:title"]', 'content', title);
+    set('meta[property="og:description"]', 'content', desc);
+    set('meta[property="og:url"]', 'content', canonicalUrl);
+    set('meta[property="og:type"]', 'content', route.startsWith('/redbook/') ? 'article' : 'website');
+    set('meta[name="twitter:title"]', 'content', title);
+    set('meta[name="twitter:description"]', 'content', desc);
+
+    /* Article-level JSON-LD — injected only on article pages, removed on navigation away */
+    const existingLd = document.getElementById('article-ld');
+    if (route === '/redbook/co-pilot-to-counterparty') {
+      const ld = {
+        '@context': 'https://schema.org',
+        '@type': 'ScholarlyArticle',
+        'headline': 'From Co-Pilot to Counterparty: How Autonomous AI Agents Are Rewriting the Rules of Trade Finance',
+        'description': descriptions['/redbook/co-pilot-to-counterparty'],
+        'url': 'https://www.strikescf.com/redbook/co-pilot-to-counterparty',
+        'datePublished': '2026-06-26',
+        'dateModified': '2026-06-26',
+        'author': { '@type': 'Organization', 'name': 'Strike SCF', '@id': 'https://www.strikescf.com/#organization' },
+        'publisher': { '@id': 'https://www.strikescf.com/#organization' },
+        'isPartOf': { '@type': 'Periodical', 'name': 'Strike SCF Red Paper Series', 'url': 'https://www.strikescf.com/redbook' },
+        'about': [
+          { '@type': 'Thing', 'name': 'Agentic AI' },
+          { '@type': 'Thing', 'name': 'Trade Finance' },
+          { '@type': 'Thing', 'name': 'Supply Chain Finance' },
+          { '@type': 'Thing', 'name': 'Autonomous AI Agents' },
+          { '@type': 'Thing', 'name': 'Open Network Finance' },
+        ],
+        'keywords': 'agentic AI trade finance, AI agents supply chain finance, trade finance gap, autonomous AI procurement, open network trade finance, supply chain finance 2026',
+        'wordCount': 3600,
+        'inLanguage': 'en-US',
+        'license': 'https://www.strikescf.com/redbook',
+      };
+      if (!existingLd) {
+        const s = document.createElement('script');
+        s.type = 'application/ld+json';
+        s.id = 'article-ld';
+        s.text = JSON.stringify(ld);
+        document.head.appendChild(s);
+      } else {
+        existingLd.text = JSON.stringify(ld);
+      }
+    } else if (existingLd) {
+      existingLd.remove();
     }
   }, [route]);
 
@@ -60,6 +110,7 @@ function App() {
   else if (route === '/programs/reverse-factoring') Page = ReverseFactoringPage;
   else if (route === '/programs/dynamic-discounting') Page = DynamicDiscountingPage;
   else if (route === '/redbook') Page = RedbookPage;
+  else if (route === '/redbook/co-pilot-to-counterparty') Page = RedPaperCopilotPage;
 
   return (
     <React.Fragment>

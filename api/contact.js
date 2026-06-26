@@ -13,7 +13,7 @@ export default async function handler(req, res) {
   }
 
   const apiKey = process.env.RESEND_API_KEY;
-  const toEmail = process.env.CONTACT_TO_EMAIL || 'hello@strikescf.com';
+  const toEmail = process.env.CONTACT_TO_EMAIL || 'info@strikescf.com';
 
   if (!apiKey) {
     console.error('RESEND_API_KEY not set');

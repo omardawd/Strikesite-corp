@@ -1390,6 +1390,69 @@ function RedbookPage() {
         </div>
       </section>
 
+      {/* ── RED PAPERS ── */}
+      <section className="section">
+        <div className="container">
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: 40, flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <div className="mono" style={{ color: 'var(--blue)', fontSize: 10, letterSpacing: '0.1em', marginBottom: 10 }}>RED PAPERS</div>
+              <h2 className="display-md" style={{ maxWidth: '28ch' }}>Research &amp; editorial.</h2>
+            </div>
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--gray)', fontWeight: 300, maxWidth: '38ch', lineHeight: 1.65 }}>
+              Long-form analysis from the Strike SCF research team. Market intelligence, structural arguments, and the evidence behind our product decisions.
+            </p>
+          </div>
+
+          {/* Article card — Red Paper No. 1 */}
+          <a href="/redbook/co-pilot-to-counterparty" onClick={(e) => navTo(e, '/redbook/co-pilot-to-counterparty')} style={{ display: 'block', textDecoration: 'none', color: 'inherit' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'auto 1fr', borderTop: '2px solid var(--ink)', transition: 'border-color 0.15s ease', cursor: 'pointer' }}
+              onMouseOver={e => e.currentTarget.style.borderTopColor = 'var(--blue)'}
+              onMouseOut={e => e.currentTarget.style.borderTopColor = 'var(--ink)'}
+            >
+              {/* Left — cover thumbnail */}
+              <div style={{ width: 'clamp(100px, 16vw, 200px)', background: 'var(--ink)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', padding: '20px 16px', flexShrink: 0 }}>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'rgba(255,255,255,0.3)', letterSpacing: '0.08em' }}>NO. 01</div>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(11px, 1.5vw, 16px)', fontWeight: 700, color: '#fff', letterSpacing: '-0.02em', lineHeight: 1.2, marginBottom: 8 }}>From Co-Pilot to Counterparty</div>
+                  <div style={{ width: 20, height: 2, background: 'var(--blue)' }} />
+                </div>
+                <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'rgba(255,255,255,0.25)', letterSpacing: '0.06em' }}>JUNE 2026</div>
+              </div>
+
+              {/* Right — meta */}
+              <div style={{ padding: 'clamp(20px, 3vw, 36px)', display: 'flex', flexDirection: 'column', justifyContent: 'space-between', gap: 20, borderLeft: '1px solid var(--border)' }}>
+                <div>
+                  <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--blue)', letterSpacing: '0.08em', marginBottom: 10 }}>AGENTIC AI · TRADE FINANCE · MARKET INFRASTRUCTURE</div>
+                  <h3 className="display-sm" style={{ marginBottom: 12 }}>How Autonomous AI Agents Are Rewriting the Rules of Trade Finance</h3>
+                  <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: 'var(--gray)', lineHeight: 1.65, fontWeight: 300, maxWidth: '60ch' }}>
+                    The $2.5 trillion trade finance gap persists not because capital is scarce — but because the coordination infrastructure is broken. This paper argues that agentic AI is the first genuine architectural response, and that open networks are the prerequisite for any of it to work.
+                  </p>
+                </div>
+                <div style={{ display: 'flex', gap: 28, flexWrap: 'wrap', alignItems: 'center', justifyContent: 'space-between' }}>
+                  <div style={{ display: 'flex', gap: 24, flexWrap: 'wrap' }}>
+                    {[{ label: 'Reading Time', val: '14 min' }, { label: 'Sources', val: '33' }, { label: 'Words', val: '~3,600' }].map((m, i) => (
+                      <div key={i}>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 9, color: 'var(--gray-soft)', letterSpacing: '0.06em', marginBottom: 3 }}>{m.label}</div>
+                        <div style={{ fontFamily: 'var(--font-mono)', fontSize: 12, color: 'var(--ink)' }}>{m.val}</div>
+                      </div>
+                    ))}
+                  </div>
+                  <span style={{ fontFamily: 'var(--font-mono)', fontSize: 11, color: 'var(--blue)', letterSpacing: '0.06em' }}>READ →</span>
+                </div>
+              </div>
+            </div>
+          </a>
+
+          {/* Future articles placeholder */}
+          <div style={{ marginTop: 1, padding: '24px 28px', background: 'var(--offwhite)', display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{ width: 6, height: 6, borderRadius: '50%', background: 'var(--border-strong)', flexShrink: 0 }} />
+            <p style={{ fontFamily: 'var(--font-body)', fontSize: 13, color: 'var(--gray-soft)', fontWeight: 300, margin: 0 }}>
+              Red Paper No. 2 — <em>The PassportScore Architecture: Building Portable Risk Identity for Global Suppliers</em> — in production.
+            </p>
+          </div>
+        </div>
+      </section>
+
       <section className="section off">
         <div className="container">
           <SectionHead title="What the RedBook covers." />
