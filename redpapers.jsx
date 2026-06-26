@@ -363,13 +363,6 @@ function RedPaperCopilotPage() {
             >
               READ THE RED PAPER →
             </a>
-            <a href="#"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'transparent', color: 'rgba(255,255,255,0.52)', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.06em', padding: '12px 24px', textDecoration: 'none', border: '1px solid rgba(255,255,255,0.14)', borderRadius: 2, transition: 'border-color 0.15s ease, color 0.15s ease' }}
-              onMouseOver={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.38)'; e.currentTarget.style.color = 'rgba(255,255,255,0.9)'; }}
-              onMouseOut={e => { e.currentTarget.style.borderColor = 'rgba(255,255,255,0.14)'; e.currentTarget.style.color = 'rgba(255,255,255,0.52)'; }}
-            >
-              ↓ DOWNLOAD PDF
-            </a>
           </div>
 
           {/* Meta strip */}
@@ -642,26 +635,6 @@ function RedPaperCopilotPage() {
             <p style={body}>
               The infrastructure for the agentic era is being built now. The architecture decisions being made today will determine who has access to capital in the global supply chains of 2030.
             </p>
-          </ArticleSection>
-
-          {/* ── Download CTA ── */}
-          <ArticleSection delay={0.05}>
-            <div style={{ background: 'var(--ink)', padding: 'clamp(28px, 4vw, 44px)', margin: '3rem 0' }}>
-              <div style={{ fontFamily: 'var(--font-mono)', fontSize: 10, color: 'var(--blue)', letterSpacing: '0.1em', marginBottom: 14 }}>STRIKE SCF · RED PAPER NO. 1</div>
-              <div style={{ fontFamily: 'var(--font-display)', fontSize: 'clamp(1.2rem, 2.2vw, 1.55rem)', fontWeight: 700, letterSpacing: '-0.025em', color: '#fff', lineHeight: 1.2, maxWidth: '28ch', marginBottom: 12 }}>
-                Download the full Red Paper as a PDF.
-              </div>
-              <p style={{ fontFamily: 'var(--font-body)', fontSize: 14, color: '#9AA0AB', fontWeight: 300, maxWidth: '44ch', lineHeight: 1.6, marginBottom: 20 }}>
-                The formatted PDF edition includes the full bibliography, figures, and data appendix. Suitable for internal distribution and research citation.
-              </p>
-              <a href="#"
-                style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--blue)', color: '#fff', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.06em', padding: '13px 28px', textDecoration: 'none', borderRadius: 2, transition: 'background 0.15s ease' }}
-                onMouseOver={e => e.currentTarget.style.background = 'var(--blue-hover)'}
-                onMouseOut={e => e.currentTarget.style.background = 'var(--blue)'}
-              >
-                ↓ DOWNLOAD RED PAPER (PDF)
-              </a>
-            </div>
           </ArticleSection>
 
           {/* ── Bibliography (collapsible) ── */}
