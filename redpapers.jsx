@@ -354,17 +354,6 @@ function RedPaperCopilotPage() {
             How autonomous AI agents are rewriting the rules of trade finance - and why open networks are the prerequisite for any of it to work.
           </p>
 
-          {/* CTAs */}
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: 12, alignItems: 'center', marginBottom: 44 }}>
-            <a href="#article"
-              style={{ display: 'inline-flex', alignItems: 'center', gap: 8, background: 'var(--blue)', color: '#fff', fontFamily: 'var(--font-mono)', fontSize: 11, letterSpacing: '0.06em', padding: '12px 24px', textDecoration: 'none', borderRadius: 2, transition: 'background 0.15s ease' }}
-              onMouseOver={e => e.currentTarget.style.background = 'var(--blue-hover)'}
-              onMouseOut={e => e.currentTarget.style.background = 'var(--blue)'}
-            >
-              READ THE RED PAPER →
-            </a>
-          </div>
-
           {/* Meta strip */}
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: 0, borderTop: '1px solid rgba(255,255,255,0.07)', paddingTop: 20 }}>
             {[
