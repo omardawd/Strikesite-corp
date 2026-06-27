@@ -399,7 +399,7 @@ function RedPaperCopilotPage() {
           </ArticleSection>
 
           <ArticleSection delay={0.08}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', margin: '2rem 0 2.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 1, background: 'var(--border)', margin: '2rem 0 2.5rem' }}>
               <StatCallout number={2.5} suffix="T" label="Trade Finance Gap" description="Unmet global demand in 2026 - flat for three consecutive years." />
               <StatCallout number={41} suffix="%" label="SME Rejection Rate" description="Applications rejected vs. 7% for multinationals historically." />
               <StatCallout number={0.5} suffix="%" label="Default Rate" description="Trade finance instruments default below 0.5% - not a credit problem." />
@@ -503,7 +503,7 @@ function RedPaperCopilotPage() {
           </ArticleSection>
 
           <ArticleSection delay={0.05}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 1, background: 'var(--border)', margin: '2rem 0 2.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', gap: 1, background: 'var(--border)', margin: '2rem 0 2.5rem' }}>
               <StatCallout number={68} suffix="%" label="Supplier Agreement Rate" description="Walmart suppliers who reached deals directly with the AI negotiation agent." />
               <StatCallout number={35} suffix=" days" label="Payment Extension" description="Average extension in supplier payment terms negotiated autonomously." />
               <StatCallout number={75} suffix="%" label="Preferred AI" description="Suppliers who preferred negotiating with the AI over a human counterpart." />
@@ -595,7 +595,7 @@ function RedPaperCopilotPage() {
 
           {/* Section VII - 2x2 stat grid */}
           <ArticleSection delay={0.08}>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 1, background: 'var(--border)', margin: '0.5rem 0 2.5rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: 1, background: 'var(--border)', margin: '0.5rem 0 2.5rem' }}>
               <StatCallout number={86} suffix="%" label="Scaling AI by 2026" description="Organizations planning to scale AI implementations this year. (Prolifics / KPMG)" />
               <StatCallout number={40} suffix="%" label="Apps Embedding Agents" description="Enterprise applications embedding AI agents directly into operational workflows by 2026." />
               <StatCallout number={75} suffix="%" label="Procurement Transformed" description="Procurement activities PwC estimates will be transformed by agentic AI." />
