@@ -5,7 +5,7 @@ const { useState, useEffect, useRef } = React;
 function Logo() {
   return (
     <a href="/" className="brand" onClick={(e) => navTo(e, '/')} aria-label="Strike SCF — home">
-      <img src="/assets/S-profile-logo.png" alt="" width="26" height="26" />
+      <img src="/assets/S-profile-logo.png" alt="Strike SCF" width="26" height="26" />
       <span className="brand-word">strike scf</span>
     </a>
   );
@@ -417,7 +417,7 @@ function ProductFrame() {
         {/* Sidebar — mirrors the production portal nav */}
         <aside className="pframe-side" aria-hidden="true">
           <div className="pframe-side-brand">
-            <img src="/assets/S-profile-logo.png" alt="" />
+            <img src="/assets/S-profile-logo.png" alt="Strike SCF" />
             <span>strike scf</span>
           </div>
           {PF_NAV_ITEMS.map((item) => (

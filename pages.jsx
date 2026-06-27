@@ -40,6 +40,7 @@ function HeroFlowHeadline() {
   return (
     <h1 className={'hero-seq-block' + (leaving ? ' leaving' : '')}
         aria-label="Source, vet, negotiate, close, finance — with Strike SCF AI">
+      <span className="sr-only">AI-Native Supply Chain Finance Platform | Reverse Factoring, Invoice Factoring &amp; Trade Finance</span>
       <span className="hero-seq" aria-hidden="true">
         {HERO_STAGES.map((w, i) => {
           const last = i === HERO_STAGES.length - 1;

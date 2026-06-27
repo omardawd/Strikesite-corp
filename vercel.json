@@ -1,4 +1,12 @@
 {
+  "redirects": [
+    {
+      "source": "/(.*)",
+      "has": [{ "type": "host", "value": "strikescf.com" }],
+      "destination": "https://www.strikescf.com/$1",
+      "permanent": true
+    }
+  ],
   "rewrites": [
     { "source": "/google(.*).html", "destination": "/google$1.html" },
     { "source": "/(.*)", "destination": "/index.html" }
